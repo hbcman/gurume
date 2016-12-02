@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+.daimei{
+font-size: 2ex;
+color: red;
+ margin: 0 auto; 
+}
+
+.buttontop {
+font-size: 1.4em;
+font-weight: bold;
+margin-left: auto;
+margin-right: auto;
+padding: 10px 30px;
+color: #fff;
+border: none;
+background-color: darkred;
+}
+
+.button1 {
+font-size: 1.4em;
+font-weight: bold;
+padding: 10px 30px;
+color: #fff;
+margin: 0 auto;
+border:1px solid black;
+background-color: red;
+}
+.button1:hover {
+	background-color: orange;
+}
+.posbuttom{
+    text-align:center;
+    margin:　0 auto;
+}
