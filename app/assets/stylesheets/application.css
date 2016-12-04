@@ -13,13 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
-.daimei{
-font-size: 2ex;
-color: red;
- margin: 0 auto; 
-}
-
 .buttontop {
 font-size: 1.4em;
 font-weight: bold;
@@ -30,7 +23,7 @@ color: #fff;
 border: none;
 background-color: darkred;
 }
-
+/*.button1は項目ボタンのデザインのclass*/
 .button1 {
 font-size: 1.4em;
 font-weight: bold;
@@ -40,10 +33,19 @@ margin: 0 auto;
 border:1px solid black;
 background-color: red;
 }
+/*項目ボタンにマウスカーソルが重なった時のしょり(オレンジ色に変わる)*/
 .button1:hover {
 	background-color: orange;
 }
+/*項目ボタンの表示位置を指定する*/
 .posbuttom{
     text-align:center;
     margin:　0 auto;
+}
+/*背景色を指定する*/
+body{
+    background-color:  cornsilk;
+}
+a {
+text-decoration: none;
 }

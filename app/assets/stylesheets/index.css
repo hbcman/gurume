@@ -1,0 +1,44 @@
+/*タイルのデザインを生成するclass*/
+.Tile
+ {
+ position: relative;
+ height: 150px;
+ width: 150px;
+ background-color: red;
+ margin: 10px;
+ float: left;
+ border: none;
+   }
+   .Tile:hover {
+	background-color: orange;
+}
+/*タイルのなかの文字の大きさや表示位置,書体などを指定するclass*/
+ .TileContents
+    {
+ position: relative;
+ height: auto;
+ width: auto;
+ top: auto;
+ font-family: Meiryo UI;
+ font-size: 24pt;
+ color: White;
+ }
+     /*tableの位置を指定(たぶん意味ないから消す予定)*/       
+.postable{
+    position: relative;
+    margin:　0 auto; 
+    
+}
+/*div囲まれた要素を*/
+.box {
+	display: inline;
+}
+.boxContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/* 長くなるのでベンダープレフィックスの記述は省略 */
+}
+a{      
+    color: blue;  /* 文字を青色 */
+}

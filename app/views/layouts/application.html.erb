@@ -6,16 +6,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head> 
-<div class="daimei">
-<h1>
-<button class="buttontop" type="submit">新大ぐるぐるウォーカー</button>
-</h1>
-</div>
+<!--ここから-->
+<!--タイトルのロゴ(画像)を左上に表示-->
+<%= image_tag "cooltext219405935698018.png" %>
+
 
 <body>
+<!--ボタンを表示-->
 <div class="posbuttom">
-<button class="button1" type="submit">トップページ</button><button class="button1" type="submit">会員登録・ログイン</button><button class="button1" type="submit">クーポンページ</button><button class="button1" type="submit">お店情報</button><button class="button1" type="submit">団体紹介</button><button class="button1" type="submit">各種問い合わせ</button>
+<button class="button1" type="submit"><%= link_to "トップページ", root_path, :style=>"color:white;" %></button><button class="button1" type="submit">会員登録・ログイン</button><button class="button1" type="submit">クーポンページ</button><button class="button1" type="submit"><%= link_to "お店一覧", users_index_path,:style=>"color:white;" %></button><button class="button1" type="submit">団体紹介</button><button class="button1" type="submit">各種問い合わせ</button>
 </div>
+<!--ここまでが全体のページにタイトル,トップページなどのボタンを表示させる-->
 <%= yield %>
 </body>
 </html>
