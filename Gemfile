@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+gem 'devise'
+#omniauth
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -31,7 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+# ページネーション
+gem 'kaminari'
+# ページネーション
+gem 'jquery-turbolinks'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -44,4 +50,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
+gem 'gmaps4rails'
+gem 'geocoder'
+gem 'jpmobile', '5.0.0'
+gem 'rack-user_agent'

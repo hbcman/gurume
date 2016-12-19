@@ -1,20 +1,66 @@
+<h1>お店登録ページ for 管理者</h1>
 <%# formタグを生成するform_forメソッド %>
 <%= form_for @user do |f| %>
     <div>
         名前: <%= f.text_field :name %>
     </div>
     <div>
+        ジャンル: <%= f.text_field :genre %>
+    </div>
+    <div>
         住所: <%= f.text_field :address %>
+    </div>
+    <div>
+        緯度:
+        <%= f.text_field :latitude %>
+    </div>
+    <div>
+        経度:
+        <%= f.text_field :longitude %>
     </div>
     <div>
         電話番号: <%= f.text_field :tel %>
     </div>
     <div>
+        定休日: <%= f.text_field :closingday %>
+    </div>
+    <div>
+        営業時間: <%= f.text_field :time %>
+    </div>
+    <div>
+        店の雰囲気(画像ファイル名): <%= f.text_field :airphoto %>
+    </div>
+    <div>
+        店の雰囲気(テキスト): <%= f.text_field :airtext %>
+    </div>
+    <div>
+        メニュー(画像ファイル名): <%= f.text_field :menuphoto %>
+    </div>
+    <div>
+        メニュー(テキスト): <%= f.text_field :menutext %>
+    </div>
+    <div>
+        一押し(画像ファイル名): <%= f.text_field :itioshiphoto %>
+    </div>
+    <div>
+        一押し(テキスト): <%= f.text_field :itioshitext %>
+    </div>
+    <div>
+        クーポン: <%= f.text_field :coupon %>
+    </div>
+    <div>
+        値段: <%= f.text_field :money %>
+    </div>
+    <div>
         お店のホームページ/Twitterアカウント: <%= f.text_field :storeurl %>
+    </div>
+    <div>
+        特徴: <%= f.text_area :feature %>
     </div>
     <div>
         コメント: <%= f.text_area :comment %>
     </div>
+    
     <div>
         <%= f.submit "送信" %>
     </div>

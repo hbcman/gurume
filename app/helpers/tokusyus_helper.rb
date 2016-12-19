@@ -1,0 +1,2 @@
+module TokusyusHelper
+end

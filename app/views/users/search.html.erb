@@ -1,0 +1,127 @@
+<%# PC用ページ %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<% if request.from_pc? %>
+    <%# catalog.cssと連携させる %>
+    <link rel="stylesheet" type="text/css" href="catalog.css">
+    <p><font size="6.5">お店一覧</font></p>
+    <% c = 0 %>
+    <% @users.each do |user| %>
+        <% if c%3==0 then %>
+            <table align="center" width="80%">
+        <% end %>
+        <%if c%3==0 then %>
+            <div class="catalog_box_left" >
+                <td style="width: 30%; vertical-align: top; border: 1px solid; border-radius: 7px;">
+                    <div class="catalog_box">
+                        <%= link_to user_path(user), :class => "image" do %>
+                            <%= image_tag user.itioshiphoto, :size => '240x200' %><br>
+                        <% end %>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
+                        周辺施設からの距離: <%= user.address %><br>
+                        予算: <%= user.money %><br>
+                        営業時間: <%= user.time %></font></div>
+                    </div>
+                </td>
+            </div>
+            <% if c==@users.length-1 then %>
+                <td width="30%"></td><td width="30%"></td>
+            <% end %>
+        <% end %>
+        <% if c%3==1 then %>
+            <div class="catalog_box_center" align="center">
+                <td style="width: 30%; vertical-align: top; border: 1px solid; border-radius: 7px">
+                    <div class="catalog_box">
+                        <%= link_to user_path(user), :class => "image" do %>
+                            <%= image_tag user.itioshiphoto, :size => '240x200' %><br>
+                        <% end %>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
+                        周辺施設からの距離: <%= user.address %><br>
+                        予算: <%= user.money %><br>
+                        営業時間: <%= user.time %></font></div>
+                    </div>
+                </td>   
+            </div>
+            <% if c==@users.length-1 then %>
+                <td width="30%"></td>
+            <% end %>
+        <% end %>
+        <% if c%3==2 then %>
+            <div class="catalog_box_right" >
+                <td style="width: 30%; vertical-align: top; border: 1px solid; border-radius: 7px">
+                    <div class="catalog_box">
+                        <%= link_to user_path(user), :class => "image" do %>
+                            <%= image_tag user.itioshiphoto, :size => '240x200' %><br>
+                        <% end %>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
+                        周辺施設からの距離: <%= user.address %><br>
+                        予算: <%= user.money %><br>
+                        営業時間: <%= user.time %></font></div>
+                    </div>
+                </td>
+            </div>
+        <% end %>
+        <% c = c + 1 %>
+        <% if c%3==0 then %>
+            <br>
+        <% end %>
+        <% if c%3==0 then %>
+            </table>
+        <% end %>
+    <% end %>
+<%# スマホ用ページ %>
+<% else %>
+    <%# catalog.cssと連携させる %>
+    <link rel="stylesheet" type="text/css" href="catalog.css">
+    <div><font size="4.5">お店一覧</font></div>
+    <% c = 0 %>
+    <% @users.each do |user| %>
+        <% if c%2==0 then %>
+            <table align="center">
+        <% end %>
+        <%if c%2==0 then %>
+            <div class="catalog_box_left_sp" >
+                <td style="width: 30%; vertical-align: top; border: 1px solid; border-radius: 7px;">
+                    <div class="catalog_box_sp">
+                        <%= link_to user_path(user) do %>
+                            <%= image_tag user.itioshiphoto, :size => '180x155' %><br>
+                        <% end %>
+                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="2">コメント: <%= user.comment %><br>
+                        周辺施設からの距離: <%= user.address %><br>
+                        予算: <%= user.money %><br>
+                        営業時間:a <%= user.time %></font></div>
+                    </div>
+                </td>
+            </div>
+            <% if c==@users.length-1 then %>
+                <div class="catalog_box_right_sp"><td width="200px"></td></div>
+            <% end %>
+        <% end %>
+        <% if c%2==1 then %>
+            <div class="catalog_box_right_sp">
+                <td style="width: 30%; vertical-align: top; border: 1px solid; border-radius: 7px">
+                    <div class="catalog_box_sp">
+                        <%= link_to user_path(user) do %>
+                            <%= image_tag user.itioshiphoto, :size => '180x155' %><br>
+                        <% end %>
+                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="2">コメント: <%= user.comment %><br>
+                        周辺施設からの距離: <%= user.address %><br>
+                        予算: <%= user.money %><br>
+                        営業時間: <%= user.time %></font></div>
+                    </div>
+                </td>   
+            </div>
+        <% end %>
+        <% c = c + 1 %>
+        <% if c%2==0 then %>
+            <br>
+        <% end %>
+        <% if c%2==0 then %>
+            </table>
+        <% end %>
+    <% end %>
+<% end %>

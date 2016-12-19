@@ -1,0 +1,11 @@
+#slide {
+width:100%;
+height:300px;
+margin:0 auto;
+position:relative;
+}
+#slide img {
+position:absolute;
+left:0;
+top:0;
+}

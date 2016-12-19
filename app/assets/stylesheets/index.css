@@ -2,43 +2,132 @@
 .Tile
  {
  position: relative;
- height: 150px;
- width: 150px;
- background-color: red;
- margin: 10px;
+ height: 200px;
+ width: 200px;
+ margin: 3px;
  float: left;
  border: none;
    }
    .Tile:hover {
-	background-color: orange;
+    filter:alpha(opacity=80);
+    opacity:0.8;
 }
 /*タイルのなかの文字の大きさや表示位置,書体などを指定するclass*/
  .TileContents
-    {
- position: relative;
- height: auto;
- width: auto;
- top: auto;
+ {
+position: absolute;
+ bottom: 0;
+ left: 0;
  font-family: Meiryo UI;
- font-size: 24pt;
+ font-size: 16pt;
  color: White;
+ }
+ .posimage{
+  position: absolute;
  }
      /*tableの位置を指定(たぶん意味ないから消す予定)*/       
 .postable{
     position: relative;
     margin:　0 auto; 
-    
 }
 /*div囲まれた要素を*/
 .box {
 	display: inline;
 }
+.toku table{
+ width: 700px; 
+}
 .boxContainer {
+ font-family: Meiryo UI;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
+	-moz-flex-direction: row;
+	-o-flex-direction: row;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
 	/* 長くなるのでベンダープレフィックスの記述は省略 */
 }
-a{      
-    color: blue;  /* 文字を青色 */
+.TLmargin {
+	margin-top: 20px; 
+}
+ .daimeipos{
+     text-align:center;
+ }
+.scr {
+  overflow: scroll;   /* スクロール表示 */ 
+  width: 1000px;
+  height: 640px;
+}
+
+.posimage img{
+ width: 200px;
+height: 200px;
+}
+@media screen and (max-width: 480px) {
+ /*タイルのデザインを生成するclass*/
+.Tile
+ {
+ position: relative;
+ height: 160px;
+ width: 157px;
+ float: left;
+ margin: 0px;
+   }
+   .Tile:hover {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+}
+/*タイルのなかの文字の大きさや表示位置,書体などを指定するclass*/
+ .TileContents
+ {
+position: absolute;
+ bottom: 0;
+ left: 0;
+ font-family: Meiryo UI;
+ font-size: 16pt;
+ color: White;
+ }
+ .posimage{
+  position: absolute;
+ }
+     /*tableの位置を指定(たぶん意味ないから消す予定)*/       
+.postable{
+    position: relative;
+    margin:　0 auto; 
+}
+/*div囲まれた要素を*/
+.boxContainer {
+ display: flex;
+	flex-direction: column-reverse;
+	align-content: stretch;
+	/*-moz-flex-direction: row;*/
+	/*-o-flex-direction: row;*/
+	/*-webkit-flex-direction: row;*/
+	/*-ms-flex-direction: row;*/
+	 /*長くなるのでベンダープレフィックスの記述は省略 */
+}
+.box table{
+ width: 325px;
+ height: 160px;
+ border-spacing: 0px;
+}
+.toku table{
+ width: 100%; 
+}
+.TLmargin {
+	margin-top: 20px; 
+}
+ .daimeipos{
+     text-align:center;
+ }
+.scr {
+  overflow: scroll;   /* スクロール表示 */ 
+  width: 1000px;
+  height: 640px;
+}
+.posimage img{
+ width: 160px;
+height: 160px;
+}
 }

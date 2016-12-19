@@ -1,0 +1,21 @@
+<%# formタグを生成するform_forメソッド %>
+<%= form_for @tokusyu do |f| %>
+    <div>
+    　id: <%= f.text_field :id %>
+    </div>
+    <div>
+    　記事名: <%= f.text_field :title %>
+    </div>
+    <div>
+        コメント: <%= f.text_area :comment %>
+    </div>
+    <div>
+        特集ページURL: <%= f.text_field :url %>
+    </div>
+    <div>
+        日付: <%= f.date_select :date %>
+    </div>
+    <div>
+        <%= f.submit "送信" %>
+    </div>
+<% end %>

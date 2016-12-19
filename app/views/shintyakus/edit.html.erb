@@ -1,0 +1,17 @@
+<%= form_for @shintyaku do |f| %>
+    <div>
+    　店名: <%= f.text_field :shopname %>
+    </div>
+    <div>
+    　記事名: <%= f.text_field :title %>
+    </div>
+    <div>
+        新着情報: <%= f.text_area :comment %>
+    </div>
+    <div>
+        <%= f.date_select :date %>
+    </div>
+    <div>
+        <%= f.submit "送信" %>
+    </div>
+<% end %>

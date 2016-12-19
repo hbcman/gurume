@@ -1,0 +1,16 @@
+@media screen and (max-width: 500px) {
+ /*タイルのデザインを生成するclass*/
+.show_box_sp {
+  display: inline-block;
+  width: 180px;
+  vertical-align: top;
+  }
+}
+
+.show_box {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+  vertical-align: top;
+}

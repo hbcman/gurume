@@ -1,0 +1,26 @@
+<h1>お店一覧 for 管理者</h1>
+<p>
+    <%= link_to "新規登録", :controller => "users", :action => "new" %>
+</p>
+<table border="1" width=auto cellspacing="0" cellpadding="5" bordercolor="#333333">
+    <tr>
+        <th>名前</th>
+        <th>住所</th>
+        <th>電話番号</th>
+        <th>お店のホームページ/Twitterアカウント</th>
+        <th>特徴</th>
+        <th>編集</th>
+        <th>削除</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.address%></td>
+            <td><%= user.tel %></td>
+            <td><%= user.storeurl %></td>
+            <td><%= user.feature %></td>
+            <td><%= link_to "編集", edit_user_path(user) %></td>
+            <td><%= link_to "削除", user_path(user), :method => :delete %></td> <%# methodを指定することで指定された方式でサーバーへリクエストすることが可能。自動的にdestroyというActionが実行される%>
+            </tr>    
+    <% end %>
+</table>

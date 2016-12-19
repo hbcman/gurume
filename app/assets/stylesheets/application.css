@@ -12,7 +12,41 @@
  *
  *= require_tree .
  *= require_self
- */
+ */ 
+ #menu {
+	/*width: 100%;*/
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+}
+#menu li{
+	display: block;
+	float: left;
+	width: 200px;
+	margin: 0;
+	padding: 0;
+}
+#menu li a {
+	display: block;
+	padding: 20px 0 20px;
+	background-color: white;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	border:none;
+}
+#menu li:last-child a{
+	border: none;
+}
+#menu li a:hover{
+	background: gray;
+}
+#toggle {
+	display: none;
+}
+ .daimeipos{
+     text-align:center;
+ }
 .buttontop {
 font-size: 1.4em;
 font-weight: bold;
@@ -30,22 +64,154 @@ font-weight: bold;
 padding: 10px 30px;
 color: #fff;
 margin: 0 auto;
-border:1px solid black;
-background-color: red;
+border:none;
+background-color: orange;
 }
 /*項目ボタンにマウスカーソルが重なった時のしょり(オレンジ色に変わる)*/
 .button1:hover {
-	background-color: orange;
+	background-color: red;
 }
 /*項目ボタンの表示位置を指定する*/
 .posbuttom{
-    text-align:center;
-    margin:　0 auto;
+   text-align: center;
+   font-size: 0;
+}
+
+.posbuttom li{
+    display: inline-block;
+    font-size: 25px;
+}
+.contents {
+background-color:black;
+}
+
+.textfont{
+	 font-family: Meiryo UI;
+}
+
+/*背景色を指定する*/
+body{
+    background-color: white;
+}
+a.button1{
+text-decoration: none;
+color: white;
+}
+
+@media only screen and (max-width: 768px) {
+	#menu li {
+		width: 25%;
+		border:none;
+	}
+}
+
+
+/*スマホ向けページのcss*/
+@media (max-width: 500px) {
+#menu {
+	width: 100%;
+	display: none;
+	}
+	#menu li {
+		width: 100%;
+		border-bottom: 1px solid white;
+	}
+	#toggle {
+		display: block;
+		position: relative;
+		width: 100%;
+		background: orange;
+	}
+	#toggle a{
+		display: block;
+		position: relative;
+		padding: 20px 0 20px;
+		border-bottom: 1px solid red;
+		color:#FFF;
+		text-align: center;
+		text-decoration: none;
+	}
+	#toggle:before {
+		display: block;
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 10px;
+		width: 30px;
+		height: 30px;
+		margin-top: -15px;
+		background: #FFF;
+	}
+	#toggle a:before, #toggle a:after {
+		display: block;
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 10px;
+		width: 30px;
+		height: 6px;
+		background: orange;
+	}
+	#toggle a:before {
+		margin-top:-9px;
+	}
+	#toggle a:after {
+		margin-top: 3px;
+	}
+.daimeipos{
+     text-align:center;
+ }
+.buttontop {
+font-size: 1.4em;
+font-weight: bold;
+margin-left: auto;
+margin-right: auto;
+padding: 10px 30px;
+color: #fff;
+border: none;
+background-color: darkred;
+}
+/*.button1は項目ボタンのデザインのclass*/
+.button1{
+font-size: 1.4em;
+font-weight: bold;
+padding: 10px 30px;
+color: #fff;
+margin: 0 auto;
+border:none;
+background-color: orange;
+}
+/*項目ボタンにマウスカーソルが重なった時のしょり(オレンジ色に変わる)*/
+.button1:hover{
+ background-color: red;
+}
+.posbuttom{
+    margin-left: auto;
+    margin-right: auto;
+}
+/*項目ボタンの表示位置を指定する*/
+div.posbuttom ul li{
+    display: inline-block;
+}
+.contents {
+background-color:black;
 }
 /*背景色を指定する*/
 body{
-    background-color:  cornsilk;
+    background-color: indianred;
 }
 a {
 text-decoration: none;
 }
+/*table{*/
+/*	width: 100%;*/
+/*}*/
+/*.menu1 li{*/
+/*    background:#f2f2f2;*/
+/*    width:200px;*/
+/*    height:50px;*/
+/*    line-height:50px;*/
+/*    text-align:center;*/
+/*    display:none;*/
+/*    }*/
+}   

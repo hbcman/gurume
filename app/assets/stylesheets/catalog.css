@@ -1,0 +1,59 @@
+@media screen and (max-width: 500px) {
+ /*タイルのデザインを生成するclass*/
+.catalog_box_sp {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  position: relative;
+  max-width: 180px;
+  vertical-align: top;
+  }
+  
+  .catalog_box_left_sp {
+    max-width: 180px;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .catalog_box_right_sp {
+    max-width: 180px;
+    display: inline-block;
+    text-align: left;
+  }
+}
+
+.image:hover {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+}
+
+.catalog_box {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  position: relative;
+  max-width: 250px;
+  vertical-align: top;
+}
+
+.catalog_box_left {
+  max-width: 250px;
+  display: inline-block;
+  text-align: left;
+}
+
+.catalog_box_center {
+  max-width: 250px;
+  display: inline-block;
+  text-align: center;
+}
+
+.catalog_box_right {
+  max-width: 250px;
+  display: inline-block;
+  text-align: right;
+}
+
+a:hover{
+  color: red;
+}
