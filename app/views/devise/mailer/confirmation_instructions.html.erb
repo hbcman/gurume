@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @email %>さま，グルぐる歩のご登録ありがとうございます</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>※まだ登録は完了しておりません。以下のURLをクリックして本登録が完了となります。</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to '本登録する', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -1,0 +1,20 @@
+.haikei
+ {
+     width: 100%;
+     height: 500px;
+}
+   .haikei:hover {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+}
+
+.table_box {
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+}
+
+    .table_box:hover{
+        filter:alpha(opacity=80);
+        opacity:0.8; 
+}

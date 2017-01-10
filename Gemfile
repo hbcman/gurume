@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
-
-# Devise
+# ユーザの権限を設定
+gem 'cancancan'
+# 管理画面
+gem 'rails_admin'
+# # Devise
 gem 'devise'
 gem 'omniauth-twitter'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

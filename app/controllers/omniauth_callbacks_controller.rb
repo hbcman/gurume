@@ -1,13 +1,13 @@
-class OmniauthCallbacksController < ApplicationController
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def twitter
-        @info = Info.from_omniauth(request.env["omniauth.auth"].except("extra"))
+        @login = Login.from_omniauth(request.env["omniauth.auth"].except("extra"))
 
-        if @info.persisted?
+        if @login.persisted?
             flash.notice = "ログインしました！"
-            sign_in_and_redirect @info
+            sign_in_and_redirect @login
         else
-            session["devise.info_attributes"] = @info.attributes
-            redirect_to new_info_registration_url
+            session["devise.login_attributes"] = @login.attributes
+            redirect_to new_login_registration_url
         end
     end
 end

@@ -12,7 +12,7 @@
         <th>編集</th>
         <th>削除</th>
     </tr>
-    <% @users.each do |user| %>
+    <% @user.each do |user| %>
         <tr>
             <td><%= link_to user.name, user_path(user) %></td>
             <td><%= user.address%></td>

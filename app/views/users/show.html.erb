@@ -1,6 +1,51 @@
 <%# PC用ページ %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <% if request.from_pc? %>
+<!-- スライダー設定ここから -->
+<!-- SlidesJS Required: Link to jQuery -->
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- End SlidesJS Required -->
+<!-- SlidesJS Required: Link to jquery.slides.js -->
+<script src="assets/jquery.slides.min.js"></script>
+<!-- End SlidesJS Required -->
+<script>
+$(function() {
+$("#slides").slidesjs({
+    width: 700,
+    height: 300,
+    play: {
+    active: false,
+    effect: "fade",
+    interval: 4000,
+    auto: true
+    },
+    //ナビゲーションの設定
+    navigation: false, //trueで表示、falseで非表示
+    //ページネーションの設定
+    pagination: false, //trueで表示、falseで非表示
+    //エフェクトの設定
+    effect: {
+        //フェイドの設定
+        fade: {
+            speed: 800, //アニメーションスピードをミリ秒で設定
+            crossfade: true //falseでクロスフェードを無効にする
+            }
+    },
+});
+});
+</script>
+<div class="container">
+<div id="slides">
+  <%= image_tag("umekoma.jpg") %>
+  <%= image_tag("zaou.jpg") %>
+  <%= image_tag("sanpoutei.jpg") %>
+  <%= image_tag("shinkawa.jpg") %>
+  <%= image_tag("hacchin.jpg") %>
+    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+</div>
+</div>
+<!-- ここまで -->
     <h1><font size="7" color ="black"><%= @user.name %></font></h1>
     <link rel="stylesheet" type="text/css" href="show.css">
     <div>
@@ -73,8 +118,6 @@
         <%= image_tag s, :size => '250x250'%>
     <% end %>
     <br>雰囲気: <%= @user.airtext%>
-    
-    
 <%# スマホ用ページ %>
 <% else %>
     <p><font size="4.5"><b><%= @user.name %></b></font></p>

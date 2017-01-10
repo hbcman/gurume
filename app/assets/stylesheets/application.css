@@ -78,7 +78,7 @@ margin-right: auto;
 padding: 10px 30px;
 color: #fff;
 border: none;
-background-color: darkred;
+background-color: white;
 }
 /*.button1は項目ボタンのデザインのclass*/
 .button1 {
@@ -116,6 +116,7 @@ background-color:black;
 /*背景色を指定する*/
 body{
     background-color: white;
+    
 }
 a.button1{
 text-decoration: none;
@@ -132,6 +133,7 @@ color: white;
 
 /*スマホ向けページのcss*/
 @media (max-width: 500px) {
+
 #menu {
 	width: 100%;
 	display: none;
@@ -139,6 +141,9 @@ color: white;
 	#menu li {
 		width: 100%;
 		border-bottom: 1px solid white;
+	}
+	#menu li a{
+		padding: 12px 0 10px;
 	}
 	#toggle {
 		display: block;
@@ -149,8 +154,8 @@ color: white;
 	#toggle a{
 		display: block;
 		position: relative;
-		padding: 20px 0 20px;
-		border-bottom: 1px solid red;
+		padding: 12px 0 10px;
+		border-bottom: 1px solid white;
 		color:#FFF;
 		text-align: center;
 		text-decoration: none;
@@ -161,9 +166,9 @@ color: white;
 		position: absolute;
 		top: 50%;
 		left: 10px;
-		width: 30px;
-		height: 30px;
-		margin-top: -15px;
+		width: 20px;
+		height: 20px;
+		margin-top: -10px;
 		background: #FFF;
 	}
 	#toggle a:before, #toggle a:after {
@@ -172,15 +177,15 @@ color: white;
 		position: absolute;
 		top: 50%;
 		left: 10px;
-		width: 30px;
-		height: 6px;
-		background: orange;
+		width: 20px;
+		height: 4px;
+		background: black;
 	}
 	#toggle a:before {
-		margin-top:-9px;
+		margin-top:-6px;
 	}
 	#toggle a:after {
-		margin-top: 3px;
+		margin-top: 2px;
 	}
 .daimeipos{
      text-align:center;
@@ -193,7 +198,7 @@ margin-right: auto;
 padding: 10px 30px;
 color: #fff;
 border: none;
-background-color: darkred;
+background-color: white;
 }
 /*.button1は項目ボタンのデザインのclass*/
 .button1{
@@ -222,20 +227,14 @@ background-color:black;
 }
 /*背景色を指定する*/
 body{
-    background-color: indianred;
+    background-color: white;
 }
 a {
 text-decoration: none;
 }
-/*table{*/
-/*	width: 100%;*/
-/*}*/
-/*.menu1 li{*/
-/*    background:#f2f2f2;*/
-/*    width:200px;*/
-/*    height:50px;*/
-/*    line-height:50px;*/
-/*    text-align:center;*/
-/*    display:none;*/
-/*    }*/
+.textfont{
+	 font-family: Meiryo UI;
+	 font-size: small;
+}
+
 }   

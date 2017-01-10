@@ -15,9 +15,9 @@
 /*タイルのなかの文字の大きさや表示位置,書体などを指定するclass*/
  .TileContents
  {
- position: absolute;
+position: absolute;
  bottom: 0;
- left: 10px;
+ left: 0;
  font-family: Meiryo UI;
  font-size: 16pt;
  color: White;
@@ -33,36 +33,12 @@
 /*div囲まれた要素を*/
 .box {
 	display: inline;
-	font-family: Meiryo UI;
 }
-
-.search{
-  margin-right: 10px;
-}
-
-.search table{
- width: 380px;
- height: 300px;
-}
-
-.toku {
- margin-left: 10px;
-}
-
-fieldset {
- border-radius: 15px;
- -webkit-border-radius: 15px;
- -moz-border-radius: 15px;
-}
-
 .toku table{
- width: 580px;
- height: 300px;
+ width: 700px; 
 }
 .boxContainer {
  font-family: Meiryo UI;
- height: 70%;
- margin-top: 40px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -84,18 +60,10 @@ fieldset {
   height: 640px;
 }
 
-.textfont{
-	 font-family: Meiryo UI;
-	}
-
 .posimage img{
  width: 200px;
- height: 200px;
- border-radius: 20px;
- -webkit-border-radius: 20px;
- -moz-border-radius: 20px;
+height: 200px;
 }
-
 @media screen and (max-width: 480px) {
  /*タイルのデザインを生成するclass*/
 .Tile
