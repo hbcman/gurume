@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
+# Devise
 gem 'devise'
-#omniauth
-gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

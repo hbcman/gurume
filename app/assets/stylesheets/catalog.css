@@ -54,6 +54,10 @@
   text-align: right;
 }
 
+.textfont {
+  font-family: Meiryo UI;
+}
+
 a:hover{
   color: red;
 }

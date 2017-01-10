@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def search
     # where は、条件に合致するオブジェクトを配列として取得します
-    @users = User.where(genre: params[:para])
+    @user = User.where(genre: params[:para])
   end
   #初期状態(管理者用)
   def kkmouse_index
-    @users = User.all
+    @user = User.all
   end
   #データを閲覧する画面を表示するためのAction
   def show

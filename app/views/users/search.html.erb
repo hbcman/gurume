@@ -3,9 +3,9 @@
 <% if request.from_pc? %>
     <%# catalog.cssと連携させる %>
     <link rel="stylesheet" type="text/css" href="catalog.css">
-    <p><font size="6.5">お店一覧</font></p>
+    <div class="textfont" align="center"><p><font size="6.5">お店一覧</font></p></div>
     <% c = 0 %>
-    <% @users.each do |user| %>
+    <% @user.each do |user| %>
         <% if c%3==0 then %>
             <table align="center" width="80%">
         <% end %>
