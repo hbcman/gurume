@@ -7,16 +7,16 @@
     <% c = 0 %>
     <% @user.each do |user| %>
         <% if c%3==0 then %>
-            <table align="center" width="80%">
+            <table align="center" width="80%" cellspacing="20">
         <% end %>
         <%if c%3==0 then %>
             <div class="catalog_box_out" >
-                <td style="width: 30%; vertical-align: top; border-radius: 7px;">
+                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;  text-align:center;">
                     <div class="catalog_box_in">
                         <%= link_to user_path(user), :class => "image" do %>
                             <%= image_tag user.itioshiphoto %><br>
                         <% end %>
-                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, users_show_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
@@ -26,18 +26,18 @@
             </div>
             <% if c==@user.length-1 then %>
                 <div catalog_box_in>
-                <td width="31%"></td><td width="31%"></td>
+                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td></td><td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td>
                 </div>
             <% end %>
         <% end %>
         <% if c%3==1 then %>
             <div class="catalog_box_out" align="center">
-                <td style="width: 30%; vertical-align: top; border-radius: 7px">
+                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid; text-align:center;">
                     <div class="catalog_box_in">
                         <%= link_to user_path(user), :class => "image" do %>
                             <%= image_tag user.itioshiphoto %><br>
                         <% end %>
-                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, users_show_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
@@ -46,17 +46,17 @@
                 </td>   
             </div>
             <% if c==@user.length-1 then %>
-                <td width="30.5%"></td>
+                <td width="33%"></td>
             <% end %>
         <% end %>
         <% if c%3==2 then %>
             <div class="catalog_box_out" >
-                <td style="width: 30%; vertical-align: top; border-radius: 7px">
+                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid; text-align:center;">
                     <div class="catalog_box_in">
                         <%= link_to user_path(user), :class => "image" do %>
                             <%= image_tag user.itioshiphoto %><br>
                         <% end %>
-                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <div style="line-height: 170%;"><span style="text-decoration: underline;"><font size="5"><%= link_to user.name, users_show_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
@@ -90,7 +90,7 @@
                         <%= link_to user_path(user), :class => "image_sp" do %>
                             <%= image_tag user.itioshiphoto %><br>
                         <% end %>
-                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, users_show_path(user) %></font></span><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間:a <%= user.time %></font></div>
@@ -108,9 +108,9 @@
                 <td style="width: 30px; vertical-align: top; border-radius: 7px">
                     <div class="catalog_box_in_sp">
                         <%= link_to user_path(user), :class => "image_sp" do %>
-                            <%= image_tag user.itioshiphoto %><br>
+                            <%= image_tag user.itioshiphoto, :class => "image" %><br>
                         <% end %>
-                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <div style="line-height: 130%;"><span style="text-decoration: underline;"><font size="3"><%= link_to user.name, users_show_path(user) %></font></span><br>
                         <font size="2">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>

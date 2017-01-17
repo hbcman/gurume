@@ -35,5 +35,8 @@ class ShintyakusController < ApplicationController
     def shintyaku_params
     params.require(:shintyaku).permit(:shopname, :title, :date, :comment)
     end
+    def detail
+    @shintyaku = Shintyaku.page(params[:page])
+    end
     
 end

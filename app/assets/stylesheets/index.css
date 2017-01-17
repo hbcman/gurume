@@ -35,7 +35,8 @@ position: absolute;
 	display: inline;
 }
 .toku table{
- width: 700px; 
+ width: 700px;
+ margin-left: 15px;
 }
 .boxContainer {
  font-family: Meiryo UI;
@@ -48,6 +49,7 @@ position: absolute;
 	-ms-flex-direction: row;
 	/* 長くなるのでベンダープレフィックスの記述は省略 */
 }
+
 .TLmargin {
 	margin-top: 20px; 
 }
@@ -113,7 +115,7 @@ position: absolute;
  border-spacing: 0px;
 }
 .toku table{
- width: 100%; 
+ width: 100%;
 }
 .TLmargin {
 	margin-top: 20px; 

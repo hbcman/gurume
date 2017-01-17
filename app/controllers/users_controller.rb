@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+    #kkmouse_indexはログイン必須
+  before_action :authenticate_login!, only: :kkmouse_index
+  
   def search
     # where は、条件に合致するオブジェクトを配列として取得します
     @user = User.where(genre: params[:para])
+    if @user.length == 0
+      @user = User.where(place: params[:para])
+    end
   end
   #初期状態(管理者用)
   def kkmouse_index
@@ -16,6 +22,11 @@ class UsersController < ApplicationController
       marker.json({name: place.name})
     end
   end
+  
+  def showall
+      @user = params[:para]
+  end
+  
   #データを作成する画面を表示するためのAction
   def new
     @user = User.new
@@ -49,9 +60,12 @@ class UsersController < ApplicationController
     redirect_to "/users/kkmouse_index"
   end
   
-  #permitメソッドの引数に指定されたパラメータ以外は、受け取らないようにする
-  def user_params
-    params.require(:user).permit(:name, :latitude, :longitude, :genre, :address, :tel, :closingday, :time, :airphoto, :airtext, :menuphoto, :menutext, :itioshiphoto, :itioshitext, :coupon, :money, :storeurl, :comment, :feature)
+  def coupon
+   @user = User.page(params:[:page])
   end
   
+  #permitメソッドの引数に指定されたパラメータ以外は、受け取らないようにする
+  def user_params
+    params.require(:user).permit(:name, :latitude, :longitude, :genre, :address, :tel, :closingday, :time, :airphoto, :airtext, :menuphoto, :menutext, :itioshiphoto, :itioshitext, :coupon, :money, :storeurl, :comment, :feature, :place)
+  end
 end

@@ -1,18 +1,20 @@
 <%# PC用ページ %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <% if request.from_pc? %>
+<link rel="stylesheet" type="text/css" href="show.css">
 <!-- スライダー設定ここから -->
 <!-- SlidesJS Required: Link to jQuery -->
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <!-- End SlidesJS Required -->
 <!-- SlidesJS Required: Link to jquery.slides.js -->
-<script src="assets/jquery.slides.min.js"></script>
+<script src="../assets/jquery.slides.min.js"></script>
 <!-- End SlidesJS Required -->
 <script>
 $(function() {
 $("#slides").slidesjs({
-    width: 700,
-    height: 300,
+    width: 100,
+    height: 60,
+    hoverPause: true,
     play: {
     active: false,
     effect: "fade",
@@ -34,90 +36,146 @@ $("#slides").slidesjs({
 });
 });
 </script>
-<div class="container">
-<div id="slides">
-  <%= image_tag("umekoma.jpg") %>
-  <%= image_tag("zaou.jpg") %>
-  <%= image_tag("sanpoutei.jpg") %>
-  <%= image_tag("shinkawa.jpg") %>
-  <%= image_tag("hacchin.jpg") %>
-    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
-    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
-</div>
-</div>
 <!-- ここまで -->
-    <h1><font size="7" color ="black"><%= @user.name %></font></h1>
-    <link rel="stylesheet" type="text/css" href="show.css">
-    <div>
-        <% buf2 = @user.menuphoto.split(",")%>
-        <% buf2.each do |s| %>
-            <class="show_box"><%= image_tag s, :size => '350x300'%>
-        <% end %>
-        <p class="show_box"><font size="6">新着情報</font></p>
-    </div>
-    <h2>特徴: <%= @user.feature %></h2>
-    <h3>基本情報</h3>
-    <table border="1" width=auto cellspacing="0" cellpadding="5" bordercolor="#333333">
-        <tr>
-            <td bgcolor="moccasin"><b>ジャンル</b></td>
-            <td><%= @user.genre %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>住所</b></td>
-            <td><%= @user.address %><br><br>
-                <div style='width: 800px;'>
-                    <div id="map" style='width: 780px; height: 300px;'></div>
-                </div>
-                <script type="text/javascript">
-                    handler = Gmaps.build('Google');
-                    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-                      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-                      handler.bounds.extendWith(markers);
-                      handler.fitMapToBounds();
-                    });
-                </script>
-            </td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>電話番号</b></td>
-            <td><%= @user.tel %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>定休日</b></td>
-            <td><%= @user.closingday %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>営業時間</b></td>
-            <td><%= @user.time %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>価格</b></td>
-            <td><%= @user.money %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>お店のホームページ/Twitterアカウント</b></td>
-            <td><%= @user.storeurl %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>クーポン</b></td>
-            <td><%= @user.coupon %></td>
-        </tr>
-        <tr>
-            <td bgcolor="moccasin"><b>コメント</b></td>
-            <td><%= @user.comment %></td>
-        </tr>
-    </table>
-    <h4>店長の一押し！！！</h4>
-    <% buf3 = @user.itioshiphoto.split(",")%>
-    <% buf3.each do |s| %>
-        <%= image_tag s, :size => '250x250'%>
-    <% end %>
-    <br><%= @user.itioshitext%>
-    <br><% buf1 = @user.airphoto.split(",")%>
-    <% buf1.each do |s| %>
-        <%= image_tag s, :size => '250x250'%>
-    <% end %>
-    <br>雰囲気: <%= @user.airtext%>
+<table align="center" width="80%">
+    <tr>
+        <td>
+            <font size="7" color ="black"><b><u><%= @user.name %></u></b></font>
+            <!--<% if @user.coupon.nil? then%>-->
+            <!--<% else %>-->
+            <!--    <div align="right"><font size="6">クーポンはこちら!!!</font></div>-->
+            <!--<% end %>-->
+            <table cellspacing="1" align="center" width="100%" height="200px">
+                <tr>
+                    <td border="0" style="width: 45%; height: 300px;">
+                        <div id="slides">
+                            <% buf2 = @user.itioshiphoto.split(",")%>
+                            <% buf2.each do |s| %>
+                                <%= image_tag s ,:class => "itioshi_size"%>
+                            <% end %>
+                        </div>
+                    </td>
+                    <td style="width: 45%; border: 1px #000000 solid;">
+                        <p class="show_box"><font size="6">新着情報</font></p>
+                    </td>
+                </tr>
+            </table><br>
+            <fieldset>
+                <legend><font size="6" color ="black"><b><u>メニュー</u></b></font></legend>
+                    <div align="right"><font size="5"><%= link_to "すべて表示", users_showall_path(@user) %></font></div>
+                    <table>
+                    <% buf2 = @user.menuphoto.split(",")%>
+                    <% buf3 = @user.menutext.split(",")%>
+                    <% length = buf2.length %>
+                    <% if length >= 6 %>
+                        <% length = 5 %>
+                    <% end %>
+                    <% counter = 0 %>
+                    <tr>
+                        <% buf2.each do |photo| %>
+                            <td width="20%">
+                                <%= image_tag photo ,:class => "menu_size" %><br>
+                            </td>
+                            <% counter = counter + 1 %>
+                            <% if counter == length then%>
+                                <% x = 5 - length %>    
+                                <% x.times do |s| %>
+                                    <td width="20%">
+                                    </td>
+                                <% end %>
+                                <% break %>
+                            <% end %>
+                        <% end %>
+                    </tr>
+                    <% counter = 0 %>
+                    <tr>
+                        <% buf3.each do |text| %>
+                            <% if counter == 6 %>
+                                <% break %>
+                            <% end %>
+                            <td width="20%">
+                                <div align="center"><font size="5"><%= text %></font></div>
+                             </td>
+                             <% counter = counter + 1 %>
+                            <% if counter == length then%>
+                                <% x = 5 - length %>    
+                                <% x.times do |s| %>
+                                    <td width="20%">
+                                    </td>
+                                <% end %>
+                                <% break %>
+                            <% end %>
+                        <% end %>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend><font size="6" color ="black"><b><u>店長の声</u></b></font></legend>
+                <p><font size="5"><%= @user.feature %></font>
+            </fieldset>
+            <fieldset>
+                <legend><font size="6" color ="black"><b><u>内装・外装</u></b></font></legend>
+                <% airphoto = @user.airphoto.split(",")%>
+                <% airphoto.each do |s| %>
+                    <%= image_tag s ,:class => "air_size"%>
+                <% end %><br>
+                <font size="5"><%= @user.airtext %></font>
+            </fieldset>
+            <p><font size="5" color ="black"><b><u>基本情報</u></b></font></p>
+            <table border="1" width=auto cellspacing="0" cellpadding="5" bordercolor="#333333">
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>ジャンル</b></font></td>
+                <td><font size="4"><%= @user.genre %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>住所</b></font></td>
+                <td><font size="4"><%= @user.address %></font><br><br>
+                    <div style='width: 800px;'>
+                        <div id="map" style='width: 780px; height: 300px;'></div>
+                    </div>
+                    <script type="text/javascript">
+                        handler = Gmaps.build('Google');
+                        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+                            handler.bounds.extendWith(markers);
+                            handler.fitMapToBounds();
+                        });
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>電話番号</b></font></td>
+                <td><font size="4"><%= @user.tel %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>定休日</b></font></td>
+                <td><font size="4"><%= @user.closingday %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>営業時間</b></font></td>
+                <td><font size="4"><%= @user.time %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>価格</b></font></td>
+                <td><font size="4"><%= @user.money %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>お店のホームページ/Twitterアカウント</b></font></td>
+                <td><font size="4"><%= @user.storeurl %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><b>クーポン</b></td>
+                <td><font size="4"><%= @user.coupon %></font></td>
+            </tr>
+            <tr>
+                <td bgcolor="moccasin"><font size="4"><b>コメント</b></font></td>
+                <td><font size="4"><font size="4"><%= @user.comment %></font></td>
+            </tr>
+        </td>
+    </tr>
+    </font>
+</table>
+
 <%# スマホ用ページ %>
 <% else %>
     <p><font size="4.5"><b><%= @user.name %></b></font></p>

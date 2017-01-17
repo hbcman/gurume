@@ -34,7 +34,7 @@
 <!-- ジャンルタイル -->
 <div class="boxContainer">
     <div class="box">
-            <table align="center" border="1">
+            <table align="center">
                 <caption><font size="6"><p>ジャンルで探す</
                 p></font></caption>
                     <tr>
@@ -67,13 +67,13 @@
         <div class="toku" >
             <table align="center" width="100%" border="1">
                 <caption><font color="green" size="7"><p>本日の新着情報</p></font></caption>
-                <tbody style="overflow-y:scroll; display: block; height: 400px;">
+                <tbody style="overflow-y:scroll; display: block; height: 400px;" border="1">
                     <% @shintyaku.each do |shintyaku| %>
                         <tr>
-                            <td style="font-size: 30px;" ><%= shintyaku.shopname%></td>
+                            <td rowspan="2" style="font-size: 30px; border: none;"><%= shintyaku.shopname%></td>
                         </tr>
                         <tr>
-                            <td width="100" style="font-size: 20px;"><%= shintyaku.title%></td>
+                            <td width="100" style="font-size: 20px; border: none;"><%= shintyaku.title%></td>
                         </tr>
                         <tr>
                             <td>
@@ -87,7 +87,7 @@
 </div>
 
 <div class="boxContainer">
-    <div class="box" border="1">
+    <div class="box">
             <table align="center">
                 <caption><font size="6"><p>場所で探す</p></font></caption>
                 <tr>
@@ -130,7 +130,7 @@
     </div>
 
          <div class="toku">
-            <table align="center">
+            <table align="center" border="1">
                 <caption><font color="red" size="7"><p>特集</p></font></button>
                 <%count = 1%>
                 <% @tokusyu.first(3).each do |tokusyu| %>

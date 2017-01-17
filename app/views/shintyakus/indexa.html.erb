@@ -1,0 +1,30 @@
+ <div class="profile_list">
+   <table>
+     <theader align="center">
+       <tr>
+         <th>店名</th><th>記事名</th><th>年月日</th><th>編集</th>
+       </tr>
+     </theader>
+     <tbody>
+       <% @shintyaku.each do |user| %>
+         <tr>
+           <td>
+             <%= link_to user.shopname %>
+           </td>
+           <td>
+             <%= user.title %>
+           </td>
+           <td>
+             <%= user.date %>
+           </td>
+           <td>
+             <%= link_to "編集", edit_shintyaku_path(user) %>
+           </td>
+           <td>
+             <%= link_to "削除", shintyaku_path(user), :method => :delete %>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+ </div>

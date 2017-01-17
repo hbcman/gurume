@@ -22,38 +22,40 @@
   }
 }
 
+.image {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  border-radius: 200px;
+}
+
 .image:hover {
     filter:alpha(opacity=80);
     opacity:0.8;
 }
 
-.catalog_box {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-  position: relative;
+.catalog_box_out {
   max-width: 250px;
   vertical-align: top;
 }
 
-.catalog_box_left {
-  max-width: 250px;
-  display: inline-block;
-  text-align: left;
-}
-
-.catalog_box_center {
-  max-width: 250px;
+.catalog_box_in {
+  max-width: 100%;
+  max-height: 400px;
   display: inline-block;
   text-align: center;
 }
-
-.catalog_box_right {
-  max-width: 250px;
-  display: inline-block;
-  text-align: right;
+.catalog_box_in img{
+   width: 450px;
+   height: 300px;
+   margin-top: 5px;
+   border-radius: 10%;
 }
+.catalog_box_in td{
+vertical-align:middle; 
+text-align:center;
 
+}
 a:hover{
   color: red;
 }

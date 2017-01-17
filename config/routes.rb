@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'login/show'
 
   get 'shintyakus/index'
-
+  get 'shintyakus/detail'
   get 'tokusyus/index'
   get 'top/test'
   root "top#index"
@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get "users/kkmouse_index"
   get "users/new"
   get "users/search"
+  get "users/show"
   get "users/category"
+  get "users/showall"
+  get "users/coupon"
   get  "shintyakus/index"
   get "whoweare/weare"
   get "whoweare/itlbe"
