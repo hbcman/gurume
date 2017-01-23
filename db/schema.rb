@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117122102) do
+ActiveRecord::Schema.define(version: 20170123162008) do
 
   create_table "logins", force: :cascade do |t|
     t.string   "email",                  default: "",          null: false
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20170117122102) do
     t.string   "uid"
     t.string   "username",               default: "anonymous"
     t.boolean  "admin_flg"
+    t.string   "grade"
+    t.string   "faculty"
+    t.string   "course"
   end
 
   add_index "logins", ["confirmation_token"], name: "index_logins_on_confirmation_token", unique: true
@@ -82,9 +85,22 @@ ActiveRecord::Schema.define(version: 20170117122102) do
     t.string   "storeurl"
     t.text     "comment"
     t.text     "feature"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "place"
+    t.text     "couponurl"
+    t.text     "coupon1"
+    t.text     "coupon2"
+    t.text     "coupon3"
+    t.text     "Presentation"
+    t.text     "Presentation1"
+    t.text     "Presentation2"
+    t.text     "Presentation3"
+    t.text     "use"
+    t.text     "use1"
+    t.text     "use2"
+    t.text     "use3"
+    t.string   "image"
   end
 
 end

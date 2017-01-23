@@ -1,6 +1,61 @@
- <% coupon = @user.coupon.split(",")%>
-<% coupon.each do |coupon| %>
+ <table align="center" width="50%">
+    <tr>
+        <td>
+ <font size="7" color ="black"><b><u><%= @user.name %></u></b></font>
+<table border=1 align="center" width="40%" cellspacing="20"  Frame="Void">
+        <% unless  @user.coupon.blank?%>
         <tr>
-            <%= coupon %>
-     </tr>
-<% end %>
+        <td style="width: 80%; height: 50px; color:white" bgcolor="burlywood">
+            <div align="center" style="font-family: 'Times New Roman', serif;">
+            <font size="5" align="center">COUPON</font><br>
+             -----------------------------------------------------<br>
+             </div>
+        <font size="5"><%= @user.coupon %></font><br>
+        掲示条件:<%= @user.Presentation %><br>
+        利用条件:<%= @user.use %>
+        </td>
+        </tr>
+        <% end %>
+        <% unless  @user.coupon1.blank?%>
+        <tr>
+        <td style="width: 80%; height: 50px; color:white" bgcolor="burlywood">
+            <div align="center" style="font-family: 'Times New Roman', serif;">
+            <font size="5" align="center">COUPON</font><br>
+             -----------------------------------------------------<br>
+             </div>
+        <font size="5"><%= @user.coupon1 %></font><br>
+        掲示条件:<%= @user.Presentation1 %><br>
+        利用条件:<%= @user.use1 %>
+        </td>
+        </tr>
+        <% end %>
+        <% unless  @user.coupon2.blank?%>
+        <tr>
+        <td style="width: 80%; height: 50px; color:white" bgcolor="burlywood">
+            <div align="center" style="font-family: 'Times New Roman', serif;">
+            <font size="5" align="center">COUPON</font><br>
+            -----------------------------------------------------
+            </div>
+        <font size="5"><%= @user.coupon2 %></font><br>
+        掲示条件:<%= @user.Presentation2 %><br>
+        利用条件:<%= @user.use2 %>
+        </td>
+        </tr>
+        <% end %>
+        <% unless  @user.coupon3.blank?%>
+        <tr>
+        <td style="width: 80%; height: 50px; color:white" bgcolor="burlywood">
+             <div align="center" style="font-family: 'Times New Roman', serif;">
+            <font size="5" align="center">COUPON</font><br>
+            -----------------------------------------------------
+            </div>
+        <font size="5"><%= @user.coupon3 %></font><br>
+        掲示条件:<%= @user.Presentation3 %><br>
+        利用条件:<%= @user.use3 %>
+        </td>
+        </tr>
+        <% end %>
+     </table>
+</td>
+</tr>
+</table>

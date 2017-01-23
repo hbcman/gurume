@@ -1,19 +1,34 @@
-<h2>Sign up</h2>
+<h2>ユーザー新規登録（無料）</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label :ユーザー名（Twitter認証用） %><br />
     <%= f.text_field :username, autofocus: true, readonly:"true" %>
   </div>
   
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :Eメール %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :学年 %><br />
+    <%= f.text_field :grade, autofocus: true %>年
+  </div>
+
+  <div class="field">
+    <%= f.label :学部 %><br />
+    <%= f.text_field :faculty, autofocus: true %>学部
+  </div>
+
+  <div class="field">
+    <%= f.label :学科・コース %><br />
+    <%= f.text_field :course, autofocus: true %>学科（コース）
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -21,7 +36,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :確認のため、もう一度パスワードを入力してください %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 

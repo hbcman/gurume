@@ -1,24 +1,24 @@
-<h1>カテゴリ検索</h1>
-<table style="overflow:hidden;">
+<h1 align="center">カテゴリ検索</h1>
+<table style="overflow:hidden;" align="center">
     <tr>
         <td>
             <%= link_to users_search_path(:para =>'ラーメン') do%>
-            <button>ラーメン</button>
+            <button class="btn">ラーメン</button>
             <% end %>
         </td>
         <td>
             <%= link_to users_search_path(:para =>'居酒屋') do%>
-            <button>居酒屋</button>
+            <button class="btn">居酒屋</button>
             <% end %>
         </td>
         <td>
             <%= link_to users_search_path(:para =>'定食') do%>
-            <button>定食</button>
+            <button class="btn">定食</button>
             <% end %>
         </td>
         <td>
             <%= link_to users_search_path(:para =>'カフェ') do%>
-            <button>カフェ</button>
+            <button class="btn">カフェ</button>
             <% end %>
         </td>
     </tr>
@@ -28,3 +28,41 @@
         </td>
     </tr>
 </table>
+<h2 align="center">店名検索</h2>
+<table align="center">
+    <td>
+    <div>
+<%= form_tag(users_search_path, method: "get") do %>
+<%= label_tag :name, "店名" %><%= text_field_tag :name, params[:name] %>
+<%= submit_tag "検索" %>
+<% end %>
+</div>
+    </td>
+</table>
+<% @user.each do |user| %>
+ <table align="center" width="40%" border=1  rules="rows" style="margin-bottom:2px">
+    <tr>
+        <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="white">
+            <%= link_to users_show_path(:id => user.id ), :style=>"color:black" do %>
+            <font size="5"><%= user.name%></font><br>
+            ---------------------------------------------------------<br>
+            <font size="4">
+            コメント: <%= user.comment %><br>
+            </font><span>---------------------------------------------------------</span><br>
+            <font size="4">
+            周辺施設からの距離: <%= user.address %><br>
+            予算: <%= user.money %><br>
+            営業時間: <%= user.time %></font>
+                    <% end %>
+            </td>
+            <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="white">
+          <%= link_to users_show_path(:id => user.id ), :style=>"color:black" do %>
+            <div class="scale">
+            <% itioshi = user.itioshiphoto.split(",") %>
+            <%= image_tag itioshi.first %>
+            </div>
+            <% end %>
+            </td>
+    </tr>
+</table>
+<% end %>

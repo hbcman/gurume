@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    #kkmouse_indexはログイン必須
+  #kkmouse_indexはログイン必須
   before_action :authenticate_login!, only: :kkmouse_index
   
   def search
@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     if @user.length == 0
       @user = User.where(place: params[:para])
     end
+    if params[:name].present?
+     @user = User.get_by_name params[:name]
+     end
   end
   #初期状態(管理者用)
   def kkmouse_index
@@ -22,9 +25,11 @@ class UsersController < ApplicationController
       marker.json({name: place.name})
     end
   end
-  
+  def category
+    @user = User.order(name: :desc)
+    end
   def showall
-      @user = params[:para]
+    @user = User.find(params[:id])
   end
   
   #データを作成する画面を表示するためのAction
@@ -61,11 +66,22 @@ class UsersController < ApplicationController
   end
   
   def coupon
-   @user = User.page(params:[:page])
+   @user = User.find(params[:id])
+  end
+  def couponall
+   @user = User.where.not(coupon: "")
   end
   
   #permitメソッドの引数に指定されたパラメータ以外は、受け取らないようにする
   def user_params
-    params.require(:user).permit(:name, :latitude, :longitude, :genre, :address, :tel, :closingday, :time, :airphoto, :airtext, :menuphoto, :menutext, :itioshiphoto, :itioshitext, :coupon, :money, :storeurl, :comment, :feature, :place)
+    params.require(:user).permit(:name, :latitude, :longitude, :genre, :address, :tel, :closingday, :time, :airphoto, :airtext, :menuphoto, :menutext, :itioshiphoto, 
+    :itioshitext, :coupon, :money, :storeurl, :comment, :feature, :place, :couponurl, :coupon1 ,:coupon2,:coupon3,:Presentation,:Presentation1,:Presentation2,:Presentation3,:use,
+    :use1,:use2,:use3)
   end
+
+  #画像アップロード
+  #private
+  #def user_params
+  #  params.require(:user).permit(:name, :email,:password, :password_confirmation, :image, :remember_digest)
+  #end
 end

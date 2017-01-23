@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */ 
+
  #menu {
 	/*width: 100%;*/
 	max-width: 1200px;
@@ -116,7 +117,6 @@ background-color:black;
 /*背景色を指定する*/
 body{
     background-color: white;
-    
 }
 a.button1{
 text-decoration: none;

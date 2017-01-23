@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :logins, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :logins, controllers: {
+    :omniauth_callbacks => "omniauth_callbacks",
+    registrations: 'logins/registrations'
+  }
   get 'login/index'
 
   get 'login/show'
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   get "users/category"
   get "users/showall"
   get "users/coupon"
+  get "users/couponall"
   get  "shintyakus/index"
   get "whoweare/weare"
   get "whoweare/itlbe"

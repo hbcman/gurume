@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="couponall.css">
+<% @user.each do |user| %>
+ <table align="center" width="40%" border=1  rules="rows" style="margin-bottom:2px">
+    <tr>
+        <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
+            <%= link_to users_coupon_path(:id => user.id ), :style=>"color:white" do %>
+            <font size="5"><%= user.name%></font><br>
+            ---------------------------------------------------------<br>
+            <font size="4">
+            コメント: <%= user.comment %><br>
+            </font><span>---------------------------------------------------------</span><br>
+            <font size="4">
+            周辺施設からの距離: <%= user.address %><br>
+            予算: <%= user.money %><br>
+            営業時間: <%= user.time %></font>
+                    <% end %>
+            </td>
+            <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
+          <%= link_to users_coupon_path(:id => user.id ), :style=>"color:white" do %>
+            <div class="scale">
+            <% itioshi = user.itioshiphoto.split(",") %>
+            <%= image_tag itioshi.first %>
+            </div>
+            <% end %>
+            </td>
+    </tr>
+</table>
+<% end %>

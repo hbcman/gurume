@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# 画像アップロード
+gem 'carrierwave'
 # ユーザの権限を設定
 gem 'cancancan'
 # 管理画面
