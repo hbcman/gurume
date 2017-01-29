@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :picture_stores
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :logins, controllers: {
     :omniauth_callbacks => "omniauth_callbacks",
@@ -19,7 +20,8 @@ Rails.application.routes.draw do
   get "users/search"
   get "users/show"
   get "users/category"
-  get "users/showall"
+  get "users/showallmenu"
+  get "users/showallair"
   get "users/coupon"
   get "users/couponall"
   get  "shintyakus/index"

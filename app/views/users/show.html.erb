@@ -1,7 +1,14 @@
 <%# PC用ページ %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <% if request.from_pc? %>
-<link rel="stylesheet" href="css/show.css">
+<head>
+<!--lightbox-->
+<link href="lightbox.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<%= stylesheet_link_tag    'css/lightbox', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'js/lightbox', 'data-turbolinks-track' => true %>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/lightbox.js" type="text/javascript"></script>
 <!-- スライダー設定ここから -->
@@ -38,8 +45,10 @@ $("#slides").slidesjs({
 });
 });
 </script>
+</head>
+<body>
 <!-- ここまで -->
-<table align="center" width="80%">
+<table align="center" width="80%" border="1">
     <tr>
         <td>
             <font size="7" color ="black"><b><u><%= @user.name %></u></b></font>
@@ -67,22 +76,23 @@ $("#slides").slidesjs({
                     <% buf2 = @user.menuphoto.split(",")%>
                     <% buf3 = @user.menutext.split(",")%>
                     <% length = buf2.length %>
-                    <div align="right"><font size="5"><%= link_to "すべて表示", users_showall_path(:id => @user.id ) %></font></div>
-                    <table>
+                    <div align="right"><font color="red" size="5"><%= link_to "すべて表示", users_showallmenu_path(:id => @user.id ) %></font></div>
+                    <table width="100%">
                     <% if length >= 6 %>
                         <% length = 5 %>
                     <% end %>
                     <% counter = 0 %>
-                    <tr>
+                    <tr width="100%">
                         <% buf2.each do |photo| %>
                             <td width="20%">
-                                <%= image_tag photo ,:class => "menu_size" %>
+                                <% big_photo = "/assets/#{photo}" %>
+                                <%= link_to image_tag(photo, :class => "menu_size"), big_photo, :rel => "lightbox[menubox]" %>
                                 <br>
                             </td>
                             <% counter = counter + 1 %>
                             <% if counter == length then%>
                                 <% x = 5 - length %>    
-                                <% x.times do |s| %>
+                                <% x.times do |photo| %>
                                     <td width="20%">
                                     </td>
                                 <% end %>
@@ -90,6 +100,7 @@ $("#slides").slidesjs({
                             <% end %>
                         <% end %>
                     </tr>
+                    <%# メニュー文章 %>
                     <% counter = 0 %>
                     <tr>
                         <% buf3.each do |text| %>
@@ -111,21 +122,47 @@ $("#slides").slidesjs({
                         <% end %>
                     </tr>
                 </table>
-            </fieldset>
+            </fieldset><br>
             <fieldset>
                 <legend><font size="6" color ="black"><b><u>店長の声</u></b></font></legend>
                 <p><font size="5"><%= @user.feature %></font>
-            </fieldset>
+            </fieldset><br>
             <fieldset>
                 <legend><font size="6" color ="black"><b><u>内装・外装</u></b></font></legend>
-                <% airphoto = @user.airphoto.split(",")%>
-                <% airphoto.each do |s| %>
-                    <%= image_tag s ,:class => "air_size"%>
-                <% end %><br>
-                <font size="5"><%= @user.airtext %></font>
-            </fieldset>
+                    <% air_photo = @user.airphoto.split(",")%>
+                    <% length = air_photo.length %>
+                    <div align="right"><font size="5"><%= link_to "すべて表示", users_showallair_path(:id => @user.id ) %></font></div>
+                    <table width="100%">
+                    <% if length >= 6 %>
+                        <% length = 5 %>
+                    <% end %>
+                    <% counter = 0 %>
+                    <tr>
+                        <% air_photo.each do |air| %>
+                            <td width="20%">
+                                <% big_air_photo = "/assets/#{air}" %>
+                                <%= link_to image_tag(air, :class => "air_size"), big_air_photo, :rel => "lightbox[airbox]" %></div>
+                            </td>
+                            <% counter = counter + 1 %>
+                            <% if counter == length then%>
+                                <% x = 5 - length %> 
+                                <% x.times do |s| %>
+                                    <td width="20%">
+                                    </td>
+                                <% end %>
+                                <% break %>
+                            <% end %>
+                        <% end %>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <font size="5"><%= @user.airtext %></font>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset><br>
             <p><font size="5" color ="black"><b><u>基本情報</u></b></font></p>
-            <table border="1" width=auto cellspacing="0" cellpadding="5" bordercolor="#333333">
+            <table border="1" width="auto" cellspacing="0" cellpadding="5" bordercolor="#333333">
             <tr>
                 <td bgcolor="moccasin"><font size="4"><b>ジャンル</b></font></td>
                 <td><font size="4"><%= @user.genre %></font></td>
@@ -178,10 +215,64 @@ $("#slides").slidesjs({
     </tr>
     </font>
 </table>
+<script src="./js/lightbox.js" type="text/javascript"></script>
+<script>
+	lightbox.option({
+		'fitImagesInViewport' : true,
+		'wrapAround': true
+	})
+</script>
+</body>
 
 <%# スマホ用ページ %>
 <% else %>
-<link rel="stylesheet" href="css/show.css">
+<head>
+<!--lightbox-->
+<link href="css/lightbox.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<%= stylesheet_link_tag    'css/lightbox', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'js/lightbox', 'data-turbolinks-track' => true %>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/lightbox.js" type="text/javascript"></script>
+<!-- スライダー設定ここから -->
+<!-- SlidesJS Required: Link to jQuery -->
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- End SlidesJS Required -->
+<!-- SlidesJS Required: Link to jquery.slides.js -->
+<script src="../assets/jquery.slides.min.js"></script>
+<!-- End SlidesJS Required -->
+<script>
+$(function() {
+$("#slides").slidesjs({
+    width: 100,
+    height: 100,
+    hoverPause: true,
+    play: {
+    active: false,
+    effect: "fade",
+    interval: 4000,
+    auto: true
+    },
+    //ナビゲーションの設定
+    navigation: false, //trueで表示、falseで非表示
+    //ページネーションの設定
+    pagination: false, //trueで表示、falseで非表示
+    //エフェクトの設定
+    effect: {
+        //フェイドの設定
+        fade: {
+            speed: 800, //アニメーションスピードをミリ秒で設定
+            crossfade: true //falseでクロスフェードを無効にする
+            }
+    },
+});
+});
+</script>
+</head>
+<body>
+<link rel="stylesheet" href="css/lightbox.css">
 <table align="center" width="100%">
     <tr>
         <td>
@@ -192,7 +283,7 @@ $("#slides").slidesjs({
             <!--<% end %>-->
             <table cellspacing="1" align="center" width="100%" height="200px">
                 <tr>
-                    <td border="0" style="width: 45%; height: 300px;">
+                    <td border="0" style="width: 45%; height: 200px;">
                         <div id="slides">
                             <% buf2 = @user.itioshiphoto.split(",")%>
                             <% buf2.each do |s| %>
@@ -207,27 +298,27 @@ $("#slides").slidesjs({
             </table><br>
             <fieldset>
                 <legend><font size="4" color ="black"><b><u>メニュー</u></b></font></legend>
-                    <div align="right"><font size="5"><%= link_to "すべて表示", users_showall_path(@user) %></font></div>
-                    <table>
+                <div align="left"><font size="3"><%= link_to "すべて表示", users_showallmenu_path(:id => @user.id ) %></font></div>
+                <table width="100%">
                     <% buf2 = @user.menuphoto.split(",")%>
                     <% buf3 = @user.menutext.split(",")%>
                     <% length = buf2.length %>
-                    <% if length >= 7 %>
-                        <% length = 6 %>
+                    <% if length >= 5 %>
+                        <% length = 4 %>
                     <% end %>
                     <% counter = 0 %>
                     <%# メニュー写真 %>
                     <tr>
                         <% buf2.each do |photo| %>
-                            <td width="33%">
-                                <%= image_tag photo ,:class => "menu_size_sp" %>
-                                <br>
+                            <td width="25%">
+                                <% big_photo = "/assets/#{photo}" %>
+                                <%= link_to image_tag(photo, :class => "menu_size_sp"), big_photo, :rel => "lightbox[menubox]" %>
                             </td>
                             <% counter = counter + 1 %>
                             <% if counter == length then%>
-                                <% x = 6 - length %>    
+                                <% x = 4 - length %>    
                                 <% x.times do |s| %>
-                                    <td width="20%">
+                                    <td width="25%">
                                     </td>
                                 <% end %>
                                 <% break %>
@@ -238,74 +329,130 @@ $("#slides").slidesjs({
                     <% counter = 0 %>
                     <tr>
                         <% buf3.each do |text| %>
-                            <% if counter == 7 %>
+                            <% if counter == 6 %>
                                 <% break %>
                             <% end %>
-                            <td width="20%">
-                                <div align="center"><font size="5"><%= text %></font></div>
+                            <td width="25%">
+                                <div align="center"><font size="2"><%= text %></font></div>
                              </td>
                              <% counter = counter + 1 %>
                             <% if counter == length then%>
-                                <% x = 5 - length %>    
+                                <% x = 4 - length %>    
                                 <% x.times do |s| %>
-                                    <td width="20%">
+                                    <td width="25%">
                                     </td>
                                 <% end %>
                                 <% break %>
                             <% end %>
                         <% end %>
                     </tr>
+                </table>    
+            </fieldset>
+            <fieldset>
+                <legend><font size="4" color ="black"><b><u>店長の声</u></b></font></legend>
+                <font size="3"><%= @user.feature %></font>
+            </fieldset>
+            <fieldset>
+                <legend><font size="4" color ="black"><b><u>内装・外装</u></b></font></legend>
+                <div align="left"><font size="3"><%= link_to "すべて表示", users_showallair_path(:id => @user.id ) %></font></div>
+                <table width="100%">
+                    <% airphoto = @user.airphoto.split(",")%>
+                    <% length = airphoto.length %>
+                    <% if length >= 5 %>
+                        <% length = 4 %>
+                    <% end %>
+                    <% counter = 0 %>
+                    <%# 内装・外装の写真 %>
+                    <tr>
+                        <% airphoto.each do |air| %>
+                            <td width="25%">
+                                <% big_air_photo = "/assets/#{air}" %>
+                                <%= link_to image_tag(air, :class => "air_size_sp"), big_air_photo, :rel => "lightbox[airbox]" %>
+                            </td>
+                            <% counter = counter + 1 %>
+                            <% if counter == length then%>
+                                <% x = 4 - length %>    
+                                <% x.times do |air| %>
+                                    <td width="25%">
+                                    </td>
+                                <% end %>
+                                <% break %>
+                            <% end %>
+                        <% end %>
+                    </tr>
+                    <%# 内装・外装の文章 %>
+                    <tr>
+                        <td colspan="4">
+                            <font size="4"><%= @user.airtext %></font>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
-    <p><font size="4"><b>特徴:</b> <%= @user.feature %></p>
-    <p><font size="4"><b>基本情報</b></p>
-    <table border="1" width="100%" cellspacing="0" cellpadding="5" bordercolor="#333333">
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>ジャンル</b></font></td>
-            <td><font size="2"><%= @user.genre %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>住所</b></font></td>
-            <td><font size="2"><%= @user.address %></font><br><br></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>電話番号</b></font></td>
-            <td><font size="2"><%= @user.tel %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>定休日</b></font></td>
-            <td><font size="2"><%= @user.closingday %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>営業時間</b></font></td>
-            <td><font size="2"><%= @user.time %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>価格</b></font></td>
-            <td><font size="2"><%= @user.money %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>お店のホームページ/Twitterアカウント</b></font></td>
-            <td><font size="2"><%= @user.storeurl %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>クーポン</b></font></td>
-            <td><font size="2"><%= @user.coupon %></font></td>
-        </tr>
-        <tr>
-            <td width="4px" bgcolor="moccasin"><font size="2"><b>コメント</b></font></td>
-            <td><font size="2"><%= @user.comment %></font></td>
-        </tr>
-    </table>
-    <h4>店長の一押し！！！</h4>
-    <% buf3 = @user.itioshiphoto.split(",")%>
-    <% buf3.each do |s| %>
-        <%= image_tag s, :size => '180x155'%>
-    <% end %>
-    <br><%= @user.itioshitext%>
-    <br><% buf1 = @user.airphoto.split(",")%>
-    <% buf1.each do |s| %>
-        <%= image_tag s, :size => '180x155'%>
-    <% end %>
-    <br>雰囲気: <%= @user.airtext%>
+            <p><font size="4"><b>基本情報</b></p>
+            <table border="1" width="100%" cellspacing="0" cellpadding="5" bordercolor="#333333">
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>ジャンル</b></font></td>
+                    <td><font size="2"><%= @user.genre %></font></td>
+                </tr>
+                <tr width="100%">
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>住所</b></font></td>
+                    <td><font size="2"><%= @user.address %></font><br>
+                        <!-- 折り畳み展開ポインタ -->
+                        <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+                        <a style="cursor:pointer;"><font size="2">GoogleMapを開く</font></a>
+                        </div>
+                        <!--// 折り畳み展開ポインタ -->
+ 
+                        <!-- 折り畳まれ部分 -->
+                        <div id="open" style="display:none;clear:both;">
+                            <div style='width: 100%;'>
+                                <div id="map" style='width: 100%; height: 300px;'></div>
+                            </div>
+                            <script type="text/javascript">
+                                handler = Gmaps.build('Google');
+                                handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                                    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+                                    handler.bounds.extendWith(markers);
+                                    handler.fitMapToBounds();
+                                });
+                            </script>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>電話番号</b></font></td>
+                    <td><font size="2"><%= @user.tel %></font></td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>定休日</b></font></td>
+                    <td><font size="2"><%= @user.closingday %></font></td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>営業時間</b></font></td>
+                    <td><font size="2"><%= @user.time %></font></td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>価格</b></font></td>
+                    <td><font size="2"><%= @user.money %></font></td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>お店のホームページ/Twitterアカウント</b></font></td>
+                    <td><font size="2"><%= @user.storeurl %></font></td>
+                </tr>
+                <tr>
+                    <td width="4px" bgcolor="moccasin"><font size="2"><b>コメント</b></font></td>
+                    <td><font size="2"><%= @user.comment %></font></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<script src="./js/lightbox.js" type="text/javascript"></script>
+<script>
+	lightbox.option({
+		'fitImagesInViewport' : true,
+		'wrapAround': true
+	})
+</script>
+</body>
 <% end %>

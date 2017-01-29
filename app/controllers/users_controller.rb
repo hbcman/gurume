@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  #kkmouse_indexはログイン必須
+  #ログイン必須
   before_action :authenticate_login!, only: :kkmouse_index
+  before_action :authenticate_login!, only: :coupon
+  before_action :authenticate_login!, only: :couponall
   
   def search
     # where は、条件に合致するオブジェクトを配列として取得します
@@ -27,8 +29,11 @@ class UsersController < ApplicationController
   end
   def category
     @user = User.order(name: :desc)
-    end
-  def showall
+  end
+  def showallmenu
+    @user = User.find(params[:id])
+  end
+  def showallair
     @user = User.find(params[:id])
   end
   

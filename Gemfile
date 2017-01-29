@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
+gem 'rb-readline'
+gem 'unicorn'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+#アンケート
 # 画像アップロード
 gem 'carrierwave'
 # ユーザの権限を設定
@@ -58,3 +65,4 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'jpmobile', '5.0.0'
 gem 'rack-user_agent'
+gem 'lightbox2-rails'

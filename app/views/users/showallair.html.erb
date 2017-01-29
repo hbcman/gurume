@@ -1,0 +1,114 @@
+<%# PC用ページ %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<% if request.from_pc? %>
+<head>
+<!-- jQueryを読み込む -->
+<link href="css/lightbox.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<%= stylesheet_link_tag    'css/lightbox', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'js/lightbox', 'data-turbolinks-track' => true %>
+</head>
+<body>
+<% air_photo = @user.airphoto.split(",")%>
+<% length = air_photo.length %>
+<table width="80%" align="center" cellpadding="5">
+    <div align="center"><font size="6" color ="black"><b><u>内装・外装</u></b></font></div>
+    <% all_photo_counter = 0 %>
+    <% five_photo_counter = 0 %>
+    <%# 内装・外装写真 %>
+    <% air_photo.each do |photo| %>
+        <% if all_photo_counter == 0 then%>
+            <tr>
+        <% end %>
+        <%# 写真の表示 %>
+        <td width="20%">
+            <% big_photo = "/assets/#{photo}" %>
+            <%= link_to image_tag(photo, :class => "menu_size"), big_photo, :rel => "lightbox" %>
+            <br>
+        </td>
+        <% all_photo_counter = all_photo_counter + 1 %>
+        <% five_photo_counter = five_photo_counter + 1 %>
+        <% if five_photo_counter == 5 then%>
+            <% five_photo_counter = 0 %>
+            </tr>
+            <tr>
+        <% end %>
+        <% if all_photo_counter == length then%>
+            <% if five_photo_counter == 0 then %>
+            <% else %>
+                <% x = 5 - five_photo_counter %>
+                <% x.times do |s| %>
+                    <td width="20%">
+                    </td>
+                <% end %>
+            <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
+<script src="./js/lightbox.js" type="text/javascript"></script>
+<script>
+	lightbox.option({
+		'fitImagesInViewport' : true,
+		'wrapAround': true
+	})
+</script>
+</body>
+
+<%# スマホ用ページ %>
+<% else %>
+<!-- jQueryを読み込む -->
+<link href="css/lightbox.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<%= stylesheet_link_tag    'css/lightbox', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'js/lightbox', 'data-turbolinks-track' => true %>
+</head>
+<body>
+<% air_photo = @user.airphoto.split(",")%>
+<% length = air_photo.length %>
+<table width="100%" align="center" cellpadding="1">
+    <div align="center"><font size="4" color ="black"><b><u>内装・外装</u></b></font></div>
+    <% all_photo_counter = 0 %>
+    <% five_photo_counter = 0 %>
+    <%# 内装・外装写真 %>
+    <% air_photo.each do |photo| %>
+        <% if all_photo_counter == 0 then%>
+            <tr>
+        <% end %>
+        <%# 写真の表示 %>
+        <td width="25%">
+            <% big_photo = "/assets/#{photo}" %>
+            <%= link_to image_tag(photo, :class => "menu_size_sp"), big_photo, :rel => "lightbox" %>
+            <br>
+        </td>
+        <% all_photo_counter = all_photo_counter + 1 %>
+        <% five_photo_counter = five_photo_counter + 1 %>
+        <% if five_photo_counter == 4 then%>
+            <% five_photo_counter = 0 %>
+            </tr>
+            <tr>
+        <% end %>
+        <% if all_photo_counter == length then%>
+            <% if five_photo_counter == 0 then %>
+            <% else %>
+                <% x = 4 - five_photo_counter %>
+                <% x.times do |s| %>
+                    <td width="25%">
+                    </td>
+                <% end %>
+            <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
+<script src="./js/lightbox.js" type="text/javascript"></script>
+<script>
+	lightbox.option({
+		'fitImagesInViewport' : true,
+		'wrapAround': true
+	})
+</script>
+</body>
+<% end %>

@@ -1,14 +1,28 @@
 .scale img{
-   width: 300px;
-   height: 200px;
-   border-style:none
+   width: 100%;
+   height: 100%;
+   border-radius: 30px;
 }
-a {
+.couponall a {
 color: white;
    display: block;
    width:100%;
    height:100%;
 }
-a:hover{
+.couponall a:hover{
    opacity: 0.5;
+}
+
+.table-css { 
+     border-style:none; 
+}
+
+@media (max-width: 500px) {
+.couponall table{
+    width: 100%;
+    table-layout: fixed;　
+    box-sizing:border-box; /* CSS3, IE8~, Opera8~ */
+    -moz-box-sizing: border-box; /* Mozilla系 */
+    -webkit-box-sizing: border-box; /* Safari, Chrome系 */
+}
 }

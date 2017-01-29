@@ -1,21 +1,64 @@
 <link rel="stylesheet" type="text/css" href="couponall.css">
+<link rel="stylesheet" href="css/couponall.css">
+<% if request.from_pc? %>
+<div class="couponall">
+    <% @user.each do |user| %>
+    <table align="center" width="80%" border="1" style="margin-bottom: 30px;">
+        <tr>
+            <td width="30%">
+                <font size="6" color="red">
+                    <u><%= user.name%></u>
+                </font>
+            </td>
+            <td height="30%" align="center" bgcolor="white">
+                <%= link_to users_coupon_path(:id => user.id ) do %>
+                    <font color="black" size="7">
+                        coupon1: <%= user.coupon %>
+                    </font>
+                <% end %>
+            </td>
+            <td height="30%" align="center" bgcolor="white">
+                <%= link_to users_coupon_path(:id => user.id ) do %>
+                    <font color="black" size="7">
+                        coupon2: <%= user.coupon1 %>
+                    </font>
+                <% end %>
+            </td>
+            <td height="30%" align="center" bgcolor="white">
+                <%= link_to users_coupon_path(:id => user.id ) do %>
+                    <font color="black" size="7">
+                        coupon3: <%= user.coupon2 %>
+                    </font>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="table-css" width="30%" height="350px">
+                <%= link_to users_coupon_path(:id => user.id ), :class => "scale" do %>
+                    <% itioshi = user.itioshiphoto.split(",") %>
+                    <%= image_tag itioshi.first %>
+                <% end %>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+</div>
+<% else %>
 <% @user.each do |user| %>
+<div class="couponall">
  <table align="center" width="40%" border=1  rules="rows" style="margin-bottom:2px">
     <tr>
-        <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
+        <td style="width: 70%; height: 50px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
             <%= link_to users_coupon_path(:id => user.id ), :style=>"color:white" do %>
-            <font size="5"><%= user.name%></font><br>
-            ---------------------------------------------------------<br>
-            <font size="4">
+            <font size="3"><%= user.name%></font><br>
+            <font size="2">
             コメント: <%= user.comment %><br>
-            </font><span>---------------------------------------------------------</span><br>
-            <font size="4">
-            周辺施設からの距離: <%= user.address %><br>
+            </font>
+            <font size="2">
             予算: <%= user.money %><br>
-            営業時間: <%= user.time %></font>
                     <% end %>
             </td>
-            <td style="width: 70%; height: 200px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
+            <td style="width: 70%; height: 50px;  color:white; margin: 1px 0px 1px 0px;"  bgcolor="burlywood">
           <%= link_to users_coupon_path(:id => user.id ), :style=>"color:white" do %>
             <div class="scale">
             <% itioshi = user.itioshiphoto.split(",") %>
@@ -25,4 +68,6 @@
             </td>
     </tr>
 </table>
+</div>
+<% end %>
 <% end %>

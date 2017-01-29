@@ -1,22 +1,31 @@
+
 .btn {
  background: -moz-linear-gradient(top,#BFD9E5, #63B0CF 50%,#0080B3 50%,#09C);
     background: -webkit-gradient(linear, left top, left bottom, from(#BFD9E5), color-stop(0.5,#63B0CF), color-stop(0.5,#0080B3), to(#09C));
     border: 1px solid #DDD;
     color: #FFF;
-    width: 100px;
-    padding: 10px 0;
+    width: 100%;
+    height: 100%;
 }
 .scale img{
    width: 300px;
    height: 200px;
    border-style:none
 }
-a {
+.category1 a {
 color: white;
    display: block;
    width:100%;
    height:100%;
 }
-a:hover{
+.category1 a:hover{
    opacity: 0.5;
+}
+@media screen and (max-width: 500px) {
+.scale img{
+   width: 100px;
+   height: 120px;
+   border-style:none
+}
+    
 }

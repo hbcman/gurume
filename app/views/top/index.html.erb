@@ -1,5 +1,4 @@
 <!--トップページ-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <!--<div class="boxContainer">-->
 <!--    <table>-->
 <!--        <tr>-->
@@ -32,11 +31,12 @@
 <!--});-->
 <!--</script>-->
 <!-- ジャンルタイル -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<% if request.from_pc? %>
 <div class="boxContainer">
     <div class="box">
             <table align="center">
-                <caption><font size="6"><p>ジャンルで探す</
-                p></font></caption>
+                <caption style="margin-bottom:-1px ;"><font size="6"><p>ジャンルで探す</p></font></caption>
                     <tr>
                         <td>
                             <%= link_to users_search_path(:para =>'ラーメン'),:class => "Tile" do%>
@@ -66,8 +66,8 @@
 <!-- 本日の新着情報 -->
         <div class="toku" >
             <table align="center" width="100%" border="1">
-                <caption><font color="green" size="7"><p>本日の新着情報</p></font></caption>
-                <tbody style="overflow-y:scroll; display: block; height: 400px;" border="1">
+                <caption style="margin-bottom:4px ;"><font  size="6"><p>本日の新着情報</p></font></caption>
+                <tbody style="overflow-y:scroll; display: block; height: 405px;" border="1">
                     <% @shintyaku.each do |shintyaku| %>
                         <tr>
                             <td style="font-size: 30px; border: none;"><%= shintyaku.shopname%></td>
@@ -130,29 +130,125 @@
     </div>
 
          <div class="toku">
-            <table align="center" border="1">
-                <caption><font color="red" size="7"><p>特集</p></font></button>
-                <%count = 1%>
-                <% @tokusyu.first(3).each do |tokusyu| %>
-                    <tr>
-                        <td style="font-size: 30px; font-family: 'Franklin Gothic Medium',sans-serif; color: #CC9900" ><I><%= tokusyu.date%></I>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 30px;" >特集#<%= count%> <%= tokusyu.title%></td>
-                    </tr>
-                    <tr>
-                        <td width="100" style="font-size: 20px;"> <%= tokusyu.comment%></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="button1" type="submit"><%= link_to "詳細はこちら", tokusyu.url, :style=>"color:white;" %></button>
-                        </td>
-                    </tr>
-                    <%count += 1%>
-                <% end %>
+            <table align="center" border="1" Frame="void">
+                <caption style="margin-bottom:3.5px ;"><font size="6"><p>特集</p></font></caption>
+                <tr>
+                <td width="400px" height="615px">
+                    
+                </td>    
+                </tr>
             </table>
             </div>
 </div>
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security 
+<% else %>
+        <div class="toku" >
+            <table align="center" border="1">
+                <caption style="margin-bottom:4px ;"><font  size="6"><p>本日の新着情報</p></font></caption>
+                <tbody style="overflow-y:scroll; display: block; height: 300px;" border="1">
+                    <% @shintyaku.each do |shintyaku| %>
+                        <tr>
+                            <td style="font-size: 30px; border: none;"><%= shintyaku.shopname%></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 20px; border: none;"><%= shintyaku.title%></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="button1" type="submit"><%= link_to "詳細はこちら", shintyakus_path(shintyaku), :style=>"color:white;" %></button>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            </div>
+            <div class="toku">
+            <table align="center" border="1" Frame="void">
+                <caption style="margin-bottom:3.5px ;"><font size="6"><p>特集</p></font></caption>
+                <tr>
+                <td width="100%" height="300px">
+                    
+                </td>    
+                </tr>
+            </table>
+            </div>
+                <div class="box">
+            <table align="center" cellspacing="0"　BORDER="0">
+                <caption style="margin-bottom:-1px ;"><font size="6"><p>ジャンルで探す</p></font></caption>
+                    <tr>
+                        <td>
+                            <%= link_to users_search_path(:para =>'ラーメン'),:class => "Tile" do%>
+                                <div class="posimage"><%= image_tag('ramen.jpg') %></div>
+                                <span class="TileContents">ラーメン</span> 
+                            <% end %>
+                        </td>
+                        <td>
+                           <%= link_to users_search_path(:para =>'居酒屋'),:class => "Tile" do%>
+                                <div class="posimage"><%= image_tag('izakaya.jpg') %></div>
+                                <span class="TileContents">居酒屋</span> 
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= link_to users_search_path(:para =>'定食'),:class => "Tile" do%>
+                                <div class="posimage"><%= image_tag('teisyoku.jpg', :class => "ookisa") %></div>
+                                <span class="TileContents">定食</span> 
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= link_to users_search_path(:para =>'カフェ'),:class => "Tile" do%>
+                                <div class="posimage"><%= image_tag('cafe.jpg', :class => "ookisa") %></div>
+                                <span class="TileContents">カフェ</span> 
+                            <% end %>
+                        </td>
+                    </tr>
+            </table>
+    </div>
+     <div class="box">
+            <table align="center" rules="none">
+                <caption><font size="6"><p>場所で探す</p></font></caption>
+                <tr>
+                    <td>
+                        <%= link_to users_search_path(:para =>'西門周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('nishimon.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">西門周辺</span> 
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= link_to users_search_path(:para =>'北門周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('kitamon.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">北門周辺</span> 
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= link_to users_search_path(:para =>'正門・中門周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('seimon.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">正門・中門周辺</span> 
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= link_to users_search_path(:para =>'内野駅周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('utino.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">内野駅周辺</span> 
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= link_to users_search_path(:para =>'新潟大学前駅周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('shindaimae.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">新潟大学前駅周辺</span> 
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= link_to users_search_path(:para =>'日本文理高校周辺'),:class => "Tile" do%>
+                            <div class="posimage"><%= image_tag('bunri.jpg', :size => "200x200") %></div>
+                            <span class="TileContents">日本文理高校周辺</span> 
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+    </div>
+<%end%>

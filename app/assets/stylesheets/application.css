@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */ 
-
+@media screen and (min-width: 768px) {
  #menu {
 	/*width: 100%;*/
 	max-width: 1200px;
@@ -118,11 +118,14 @@ background-color:black;
 body{
     background-color: white;
 }
-a.button1{
-text-decoration: none;
-color: white;
+a{
+	color:red;
 }
-
+/*a.button1{*/
+/*text-decoration: none;*/
+/*color: white;*/
+/*}*/
+}
 @media only screen and (max-width: 768px) {
 	#menu li {
 		width: 25%;
@@ -133,7 +136,6 @@ color: white;
 
 /*スマホ向けページのcss*/
 @media (max-width: 500px) {
-
 #menu {
 	width: 100%;
 	display: none;
@@ -222,15 +224,13 @@ background-color: orange;
 div.posbuttom ul li{
     display: inline-block;
 }
-.contents {
-background-color:black;
-}
+
 /*背景色を指定する*/
 body{
     background-color: white;
 }
 a {
-text-decoration: none;
+color: red;
 }
 .textfont{
 	 font-family: Meiryo UI;

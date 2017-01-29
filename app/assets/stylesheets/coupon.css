@@ -1,0 +1,9 @@
+@media (max-width: 500px) {
+.coupon table{
+    width: 100%;
+    table-layout: fixed;　
+ box-sizing:border-box; /* CSS3, IE8~, Opera8~ */
+    -moz-box-sizing: border-box; /* Mozilla系 */
+    -webkit-box-sizing: border-box; /* Safari, Chrome系 */
+}
+}

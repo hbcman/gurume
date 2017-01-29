@@ -27,7 +27,6 @@ class ShintyakusController < ApplicationController
     end
      # データを削除するためのAction
     def destroy
-      
     @shintyaku = Shintyaku.find(params[:id])
     @shintyaku.destroy
     redirect_to shintyakus_path
