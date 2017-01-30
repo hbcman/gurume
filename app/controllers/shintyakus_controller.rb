@@ -1,6 +1,7 @@
 class ShintyakusController < ApplicationController
   def index
-    @shintyaku = Shintyaku.page(params[:page])
+    @shintyaku = Shintyaku.find(params[:id])
+    @aaa = @shintyaku
   end
   def show
     @shintyaku = Shintyaku.all
@@ -35,7 +36,7 @@ class ShintyakusController < ApplicationController
     params.require(:shintyaku).permit(:shopname, :title, :date, :comment)
     end
     def detail
-    @shintyaku = Shintyaku.page(params[:page])
+    @shintyaku = Shintyaku.find(id: params[:id])
     end
     
 end

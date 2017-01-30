@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'shintyakus/index'
   get 'shintyakus/detail'
   get 'tokusyus/index'
-  get 'top/test'
+  get '/index' => 'shintyaku#index'
   root "top#index"
   #UsersControllerのshow、new、edit、create、update、destroyそれぞれのActionに対応するルーティングを一括で設定する
   get "users/kkmouse_index"
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   get "users/showallair"
   get "users/coupon"
   get "users/couponall"
-  get  "shintyakus/index"
   get "whoweare/weare"
   get "whoweare/itlbe"
   get "whoweare/guruguru"

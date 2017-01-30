@@ -1,36 +1,39 @@
-application = 'railsapp'
+# -*- coding: utf-8 -*-
+rails_root = File.expand_path('../../', __FILE__)
+# RAILS_ENVを求める。（RAILS_ENV毎に挙動を変更したい場合に使用。今回は使用しません。)
+# rails_env = ENV['RAILS_ENV'] || "development"
 
-worker_processes 2
-working_directory "/home/guruguruwalker"
+# 追記に記載してます。入れた方がいいです。
+ENV['BUNDLE_GEMFILE'] = rails_root + "/Gemfile"
 
-listen "/var/run/unicorn/unicorn_guruguruwalker.sock"   # Unix Domain Socket
 
-pid "/var/run/unicorn/unicorn_guruguruwalker.pid"       # PIDファイル出力先
- 
-timeout 60
- 
-preload_app true
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+timeout 15
+preload_app true  # 更新時ダウンタイム無し
 
-stdout_path "/var/log/unicorn/unicorn.stdout_guruguruwalker.log"  # 標準出力ログ出力先
-stderr_path "/var/log/unicorn/unicorn.stderr_guruguruwalker.log"  # 標準エラー出力ログ出力先
- 
-GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
- 
+listen "/var/run/unicorn.sock"
+pid "/var/run/unicorn.pid"
+
+
 before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-
-  old_pid = "#{server.config[:pid]}.oldbin"
-    if old_pid != server.pid
-      begin
-        sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-        Process.kill(sig, File.read(old_pid).to_i)
-      rescue Errno::ENOENT, Errno::ESRCH
-      end
-    end
- 
-    sleep 1
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
   end
- 
-after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
 end
+
+after_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end
+
+# ログの出力
+stderr_path File.expand_path('/var/www/gurume/log/unicorn.log', ENV['RAILS_ROOT'])
+stdout_path File.expand_path('/var/www/gurume/log/unicorn.log', ENV['RAILS_ROOT'])

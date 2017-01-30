@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 gem 'rb-readline'
 gem 'unicorn'
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'unicorn-rails'
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+end
 #アンケート
 # 画像アップロード
 gem 'carrierwave'

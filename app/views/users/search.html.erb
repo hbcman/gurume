@@ -1,24 +1,62 @@
 <%# PC用ページ %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/catalog.css">
 <% if request.from_pc? %>
     <%# catalog.cssと連携させる %>
-    <link rel="stylesheet" type="text/css" href="catalog.css">
-    <div class="textfont" align="center"><font size="6.5">お店一覧</font></div>
+    <div class="textfont" align="center"><p><font size="7">お店一覧</font></p></div><br>
+    <div class="textfont" align="center"><p><font size="6">カテゴリ検索</font></p></div>
+    <div class="category">
+    <table align="center" width="40%">
+        <tr>
+            <td width="25%" height="50px">
+                <%= link_to users_search_path(:para =>'ラーメン') do%>
+                <button class="btn"><font size="6">ラーメン</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="50px" >
+                <%= link_to users_search_path(:para =>'居酒屋') do%>
+                <button class="btn"><font size="6">居酒屋</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="50px">
+                <%= link_to users_search_path(:para =>'定食') do%>
+                <button class="btn"><font size="6">定食</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="50px">
+                <%= link_to users_search_path(:para =>'カフェ') do%>
+                <button class="btn"><font size="6">カフェ</font></button>
+                <% end %>
+            </td>
+        </tr>
+    </table>
+    <div class="textfont" align="center"><p><font size="6">店名検索</font></p></div>
+        <table align="center">
+            <td>
+                <div>
+                    <%= form_tag(users_search_path, method: "get") do %>
+                        <%= label_tag :name, "店名" %><%= text_field_tag :name, params[:name] %>
+                        <%= submit_tag "検索" %>
+                    <% end %>
+                </div>
+            </td>
+        </table>
+    </div>
     <% c = 0 %>
     <% @user.each do |user| %>
         <% if c%3==0 then %>
             <table align="center" width="80%" cellspacing="20">
         <% end %>
         <%if c%3==0 then %>
-            <div class="catalog_box_out">
+            <div class="catalog_box_out_pc">
                 <td style="background-color: #FFF1CF; width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;">
-                    <div class="catalog_box_in">
-                        <%= link_to users_show_path(:id => user.id), :class => "image" do %>
+                    <div class="catalog_box_in_pc">
+                        <%= link_to users_show_path(:id => user.id), :class => "image_pc" do %>
                             <% itioshi = user.itioshiphoto.split(",") %>
                             <%= image_tag itioshi.first %>
                         <% end %>
-                        <div style="line-height: 170%;"><span style="text-align: center; text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
-                        <font size="2">コメント: <%= user.comment %><br>
+                        <div style="line-height: 170%;"><span style="text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
@@ -26,21 +64,21 @@
                 </td>
             </div>
             <% if c==@user.length-1 then %>
-                <div catalog_box_in>
-                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td><td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td>
+                <div catalog_box_in_pc>
+                <td style="width: 33%; vertical-align: top;"></td><td style="width: 33%; vertical-align: top;"></td>
                 </div>
             <% end %>
         <% end %>
         <% if c%3==1 then %>
-            <div class="catalog_box_out">
+            <div class="catalog_box_out_pc">
                 <td style="background-color: #FFF1CF; width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;">
-                    <div class="catalog_box_in">
-                        <%= link_to users_show_path(:id => user.id), :class => "image" do %>
+                    <div class="catalog_box_in_pc">
+                        <%= link_to users_show_path(:id => user.id), :class => "image_pc" do %>
                             <% itioshi = user.itioshiphoto.split(",") %>
                             <%= image_tag itioshi.first %>
                         <% end %>
-                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
-                        <font size="2">コメント: <%= user.comment %><br>
+                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
@@ -48,21 +86,21 @@
                 </td>   
             </div>
             <% if c==@user.length-1 then %>
-                <div catalog_box_in>
-                <td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td>
+                <div catalog_box_in_pc>
+                <td style="width: 33%; vertical-align: top;"></td>
                 </div>
             <% end %>
         <% end %>
         <% if c%3==2 then %>
-            <div class="catalog_box_out">
+            <div class="catalog_box_out_pc">
                 <td style="background-color: #FFF1CF; width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;">
-                    <div class="catalog_box_in">
-                        <%= link_to users_show_path(:id => user.id), :class => "image" do %>
+                    <div class="catalog_box_in_pc">
+                        <%= link_to users_show_path(:id => user.id), :class => "image_pc" do %>
                            <% itioshi = user.itioshiphoto.split(",") %>
                             <%= image_tag itioshi.first %>
                         <% end %>
-                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="5"><%= link_to user.name, user_path(user) %></font></span><br>
-                        <font size="2">コメント: <%= user.comment %><br>
+                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
+                        <font size="4">コメント: <%= user.comment %><br>
                         周辺施設からの距離: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
@@ -82,7 +120,45 @@
 <% else %>
     <%# catalog.cssと連携させる %>
     <link rel="stylesheet" type="text/css" href="catalog.css">
-    <br><div class="textfont" align="center"><font size="4.5">お店一覧</font></div>
+    <div align="center"><font size="5">お店一覧</font></div>
+    <br><div align="center"><font size="4">カテゴリ検索</font></div>
+    <div class="category1">
+    <table align="center" width="95%">
+        <tr>
+            <td width="25%" height="40px">
+                <%= link_to users_search_path(:para =>'ラーメン') do%>
+                <button class="btn"><font size="2">ラーメン</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="40px" >
+                <%= link_to users_search_path(:para =>'居酒屋') do%>
+                <button class="btn"><font size="2">居酒屋</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="40px">
+                <%= link_to users_search_path(:para =>'定食') do%>
+                <button class="btn"><font size="2">定食</font></button>
+                <% end %>
+            </td>
+            <td width="25%" height="40px">
+                <%= link_to users_search_path(:para =>'カフェ') do%>
+                <button class="btn"><font size="2">カフェ</font></button>
+                <% end %>
+            </td>
+        </tr>
+    </table>
+    <br><div align="center"><font size="4">店名検索</div>
+    <table align="center">
+        <td>
+            <div>
+                <%= form_tag(users_search_path, method: "get") do %>
+                    <%= label_tag :name, "店名" %><%= text_field_tag :name, params[:name] %>
+                    <%= submit_tag "検索" %>
+                <% end %>
+            </div>
+        </td>
+    </table>
+</div><br>
     <% c = 0 %>
     <% @user.each do |user| %>
         <% if c%2==0 then %>
@@ -106,7 +182,7 @@
             </div>
             <% if c==@user.length-1 then %>
                 <div catalog_box_in_sp>
-                    <td style="width: 50%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td><td style="width: 33%; vertical-align: top; border-radius: 7px; border: 1px #000000 solid;"></td>
+                    <td style="width: 50%; vertical-align: top;"></td>
                 </div>
             <% end %>
         <% end %>

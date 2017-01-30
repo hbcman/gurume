@@ -204,10 +204,6 @@ $("#slides").slidesjs({
                 <td><font size="4"><a href=<%=@user.storeurl%>><%=@user.storeurl%></a></font></td>
             </tr>
             <tr>
-                <td bgcolor="moccasin"><b>クーポン</b></td>
-                <td><font size="4"><%= @user.coupon %></font></td>
-            </tr>
-            <tr>
                 <td bgcolor="moccasin"><font size="4"><b>コメント</b></font></td>
                 <td><font size="4"><font size="4"><%= @user.comment %></font></td>
             </tr>
@@ -275,7 +271,7 @@ $("#slides").slidesjs({
 <link rel="stylesheet" href="css/lightbox.css">
 <table align="center" width="100%">
     <tr>
-        <td>
+        <td style="border-style:none; ">
             <font size="5" color ="black"><b><u><%= @user.name %></u></b></font>
             <!--<% if @user.coupon.nil? then%>-->
             <!--<% else %>-->

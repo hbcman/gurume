@@ -1,4 +1,4 @@
-
+/*PC用*/
 .btn {
  background: -moz-linear-gradient(top,#BFD9E5, #63B0CF 50%,#0080B3 50%,#09C);
     background: -webkit-gradient(linear, left top, left bottom, from(#BFD9E5), color-stop(0.5,#63B0CF), color-stop(0.5,#0080B3), to(#09C));
@@ -21,11 +21,66 @@ color: white;
 .category1 a:hover{
    opacity: 0.5;
 }
+
+.image_pc {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 65px;
+  text-align: center;
+  border-radius: 200px;
+}
+
+.image_pc:hover {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+}
+
+.catalog_box_out_pc {
+  max-width: 250px;
+  vertical-align: top;
+}
+
+.catalog_box_in_pc {
+  max-width: 100%;
+  display: inline-block;
+}
+.catalog_box_in_pc img{
+   width: 100%;
+   height: 250px;
+   border-radius: 10%;
+   margin-bottom: 15px;
+}
+.catalog_box_in_pc td{
+vertical-align:middle; 
+}
+
+/*スマホ用*/
 @media screen and (max-width: 500px) {
 .scale img{
    width: 100px;
    height: 120px;
    border-style:none
 }
-    
+.btn {
+ background: -moz-linear-gradient(top,#BFD9E5, #63B0CF 50%,#0080B3 50%,#09C);
+    background: -webkit-gradient(linear, left top, left bottom, from(#BFD9E5), color-stop(0.5,#63B0CF), color-stop(0.5,#0080B3), to(#09C));
+    border: 1px solid #DDD;
+    color: #FFF;
+    width: 100%;
+    height: 100%;
+}
+.scale img{
+   width: 300px;
+   height: 200px;
+   border-style:none
+}
+.category1 a {
+color: white;
+   display: block;
+   width:100%;
+   height:100%;
+}
+.category1 a:hover{
+   opacity: 0.5;
+}
 }

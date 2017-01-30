@@ -116,8 +116,50 @@ background-color:black;
 
 /*背景色を指定する*/
 body{
-    background-color: white;
+	background-color: moccasin;
+    background-image: url('http://i.imgur.com/BiSmXaq.png'), url('http://i.imgur.com/XHuy0NJ.png'), url('http://i.imgur.com/okpRxJU.png');
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
 }
+
+
+@-webkit-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@-moz-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@-ms-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color:  #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+
+
+
 a{
 	color:red;
 }
@@ -227,8 +269,48 @@ div.posbuttom ul li{
 
 /*背景色を指定する*/
 body{
-    background-color: white;
+	background-color: moccasin;
+    background-image: url('http://i.imgur.com/BiSmXaq.png'), url('http://i.imgur.com/XHuy0NJ.png'), url('http://i.imgur.com/okpRxJU.png');
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
 }
+
+
+@-webkit-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@-moz-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@-ms-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color: #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+@keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+    50% { background-color:  #ffdead }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px;
+        background-color: ##ffa07a;
+    }
+}
+
 a {
 color: red;
 }
