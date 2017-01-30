@@ -1,7 +1,7 @@
 <h2>ユーザー新規登録（無料）</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <!--<%= devise_error_messages! %>-->
   <div class="field">
     <%= f.label :ユーザー名（Twitter認証用） %><br />
     <%= f.text_field :username, autofocus: true, readonly:"true" %>

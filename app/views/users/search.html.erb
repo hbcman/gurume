@@ -57,7 +57,7 @@
                         <% end %>
                         <div style="line-height: 170%;"><span style="text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
-                        周辺施設からの距離: <%= user.address %><br>
+                        住所: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
                     </div>
@@ -79,7 +79,7 @@
                         <% end %>
                         <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
-                        周辺施設からの距離: <%= user.address %><br>
+                        住所: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
                     </div>
@@ -101,7 +101,7 @@
                         <% end %>
                         <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="6"><%= link_to user.name, user_path(user) %></font></span><br>
                         <font size="4">コメント: <%= user.comment %><br>
-                        周辺施設からの距離: <%= user.address %><br>
+                        住所: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
                     </div>
@@ -158,7 +158,7 @@
             </div>
         </td>
     </table>
-</div><br>
+</div>
     <% c = 0 %>
     <% @user.each do |user| %>
         <% if c%2==0 then %>
@@ -172,9 +172,9 @@
                             <% itioshi = user.itioshiphoto.split(",") %>
                             <%= image_tag itioshi.first %>
                         <% end %>
-                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="4"><%= link_to user.name, users_show_path(user) %></font></span><br>
+                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="4"><%= link_to user.name, user_path(user) %></font></span><br>
                         <font size="2">コメント: <%= user.comment %><br>
-                        周辺施設からの距離: <%= user.address %><br>
+                        住所: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間:<%= user.time %></font></div>
                     </div>
@@ -194,9 +194,9 @@
                             <% itioshi = user.itioshiphoto.split(",") %>
                             <%= image_tag itioshi.first %>
                         <% end %>
-                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="3"><%= link_to user.name, users_show_path(user) %></font></span><br>
+                        <div style="line-height: 170%;"><span style=" text-align: center; text-decoration: underline;"><font size="3"><%= link_to user.name, user_path(user) %></font></span><br>
                         <font size="2">コメント: <%= user.comment %><br>
-                        周辺施設からの距離: <%= user.address %><br>
+                        住所: <%= user.address %><br>
                         予算: <%= user.money %><br>
                         営業時間: <%= user.time %></font></div>
                     </div>

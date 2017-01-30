@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   #ログイン必須
-  before_action :authenticate_login!, only: :kkmouse_index
-  before_action :authenticate_login!, only: :coupon
-  before_action :authenticate_login!, only: :couponall
+  before_action :authenticate_login!, only: [:kkmouse_index, :coupon, :couponall]
   
   def search
     # where は、条件に合致するオブジェクトを配列として取得します
